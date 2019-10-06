@@ -1,5 +1,5 @@
 import React from "react";
-import { ScrollView, StyleSheet, Text, TextInput, View,Button, Alert,TouchableOpacity, } from "react-native";
+import { Dimensions, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View, } from "react-native";
 import ScreenWrapper from "../components/ScreenWrapper.native";
 
 
@@ -21,8 +21,8 @@ const SignInScreen = (props) => {
               <Text>Senha</Text>
               <TextInput value={password} onChange={setPassword}/>
             </View>
+
             <TouchableOpacity
-              color="#f194ff"
               onPress={() => {
                 props.navigation.navigate("HomeTable");
               }}
@@ -33,15 +33,15 @@ const SignInScreen = (props) => {
             </TouchableOpacity>
 
             <TouchableOpacity
-              color="#f194ff"
               onPress={() => {
-                props.navigation.navigate("HomeRestaurant");
+                props.navigation.navigate("CreateAccount", {userId: undefined,});
               }}
             >
               <Text>
-                Modo Mesa
+                Criar uma nova conta
               </Text>
             </TouchableOpacity>
+
 
           </View>
         </View>
@@ -57,8 +57,10 @@ SignInScreen.navigationOptions = {
 const styles = StyleSheet.create({
   pageContent: {
     flex: 1,
+    marginHorizontal: 20,
+    marginVertical: 10,
     justifyContent: "center",
-    height: "100%",
+    height: Dimensions.get("window").height,
     backgroundColor: "#c800ff",
   },
   center: {

@@ -9,10 +9,12 @@ import Context from "./context";
 import SignInScreen from "./src/views/login/SignInScreen.native";
 import HomeRestaurantScreen from "./src/views/restaurant/HomeRestaurantScreen.native";
 import HomeTableScreen from "./src/views/table/HomeTableScreen.native";
+import CreateAccountScreen from "./src/views/table/CreateAccountScreen.native";
 
 const RestaurantDrawer = createDrawerNavigator(
   {
     HomeRestaurant: HomeRestaurantScreen,
+    CreateAccount: CreateAccountScreen,
   },
   {
     initialRouteName: "HomeRestaurant",
