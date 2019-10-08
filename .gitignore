@@ -60,5 +60,6 @@ buck-out/
 
 #
 yarn.lock
+package.json.lock
 
 !.idea

@@ -1,8 +1,8 @@
 platform :ios, '9.0'
 require_relative '../node_modules/@react-native-community/cli-platform-ios/native_modules'
 
-target 'RestauranteModerno' do
-  # Pods for RestauranteModerno
+target 'native' do
+  # Pods for native
   pod 'FBLazyVector', :path => "../node_modules/react-native/Libraries/FBLazyVector"
   pod 'FBReactNativeSpec', :path => "../node_modules/react-native/Libraries/FBReactNativeSpec"
   pod 'RCTRequired', :path => "../node_modules/react-native/Libraries/RCTRequired"
@@ -34,7 +34,7 @@ target 'RestauranteModerno' do
   pod 'glog', :podspec => '../node_modules/react-native/third-party-podspecs/glog.podspec'
   pod 'Folly', :podspec => '../node_modules/react-native/third-party-podspecs/Folly.podspec'
 
-  target 'RestauranteModernoTests' do
+  target 'nativeTests' do
     inherit! :search_paths
     # Pods for testing
   end
@@ -42,10 +42,10 @@ target 'RestauranteModerno' do
   use_native_modules!
 end
 
-target 'RestauranteModerno-tvOS' do
-  # Pods for RestauranteModerno-tvOS
+target 'native-tvOS' do
+  # Pods for native-tvOS
 
-  target 'RestauranteModerno-tvOSTests' do
+  target 'native-tvOSTests' do
     inherit! :search_paths
     # Pods for testing
   end

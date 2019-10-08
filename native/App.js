@@ -1,64 +1,114 @@
-import React from "react";
-import { Dimensions } from "react-native";
-import { createAppContainer, createSwitchNavigator } from "react-navigation";
-import { createDrawerNavigator } from "react-navigation-drawer";
-import reducers from "./src/reducers";
-import actions from "./src/actions";
-import Context from "./context";
+/**
+ * Sample React Native App
+ * https://github.com/facebook/react-native
+ *
+ * @format
+ * @flow
+ */
 
-import SignInScreen from "./src/views/login/SignInScreen.native";
-import HomeRestaurantScreen from "./src/views/restaurant/HomeRestaurantScreen.native";
-import HomeTableScreen from "./src/views/table/HomeTableScreen.native";
-import CreateAccountScreen from "./src/views/table/CreateAccountScreen.native";
+import React from 'react';
+import {
+  SafeAreaView,
+  StyleSheet,
+  ScrollView,
+  View,
+  Text,
+  StatusBar,
+} from 'react-native';
 
-const RestaurantDrawer = createDrawerNavigator(
-  {
-    HomeRestaurant: HomeRestaurantScreen,
-    CreateAccount: CreateAccountScreen,
+import {
+  Header,
+  LearnMoreLinks,
+  Colors,
+  DebugInstructions,
+  ReloadInstructions,
+} from 'react-native/Libraries/NewAppScreen';
+
+const App: () => React$Node = () => {
+  return (
+    <>
+      <StatusBar barStyle="dark-content" />
+      <SafeAreaView>
+        <ScrollView
+          contentInsetAdjustmentBehavior="automatic"
+          style={styles.scrollView}>
+          <Header />
+          {global.HermesInternal == null ? null : (
+            <View style={styles.engine}>
+              <Text style={styles.footer}>Engine: Hermes</Text>
+            </View>
+          )}
+          <View style={styles.body}>
+            <View style={styles.sectionContainer}>
+              <Text style={styles.sectionTitle}>Step One</Text>
+              <Text style={styles.sectionDescription}>
+                Edit <Text style={styles.highlight}>App.js</Text> to change this
+                screen and then come back to see your edits.
+              </Text>
+            </View>
+            <View style={styles.sectionContainer}>
+              <Text style={styles.sectionTitle}>See Your Changes</Text>
+              <Text style={styles.sectionDescription}>
+                <ReloadInstructions />
+              </Text>
+            </View>
+            <View style={styles.sectionContainer}>
+              <Text style={styles.sectionTitle}>Debug</Text>
+              <Text style={styles.sectionDescription}>
+                <DebugInstructions />
+              </Text>
+            </View>
+            <View style={styles.sectionContainer}>
+              <Text style={styles.sectionTitle}>Learn More</Text>
+              <Text style={styles.sectionDescription}>
+                Read the docs to discover what to do next:
+              </Text>
+            </View>
+            <LearnMoreLinks />
+          </View>
+        </ScrollView>
+      </SafeAreaView>
+    </>
+  );
+};
+
+const styles = StyleSheet.create({
+  scrollView: {
+    backgroundColor: Colors.lighter,
   },
-  {
-    initialRouteName: "HomeRestaurant",
-    // contentComponent: MainDrawer,
-    // headerMode: "none",
-    drawerWidth: () => Dimensions.get("window").width,
-    edgeWidth: 0
-  }
-);
-
-const TableDrawer = createDrawerNavigator(
-  {
-    HomeTable: HomeTableScreen,
+  engine: {
+    position: 'absolute',
+    right: 0,
   },
-  {
-    initialRouteName: "HomeTable",
-    // contentComponent: MainDrawer,
-    // headerMode: "none",
-    drawerWidth: () => Dimensions.get("window").width,
-    edgeWidth: 0
-  }
-);
+  body: {
+    backgroundColor: Colors.white,
+  },
+  sectionContainer: {
+    marginTop: 32,
+    paddingHorizontal: 24,
+  },
+  sectionTitle: {
+    fontSize: 24,
+    fontWeight: '600',
+    color: Colors.black,
+  },
+  sectionDescription: {
+    marginTop: 8,
+    fontSize: 18,
+    fontWeight: '400',
+    color: Colors.dark,
+  },
+  highlight: {
+    fontWeight: '700',
+  },
+  footer: {
+    color: Colors.dark,
+    fontSize: 12,
+    fontWeight: '600',
+    padding: 4,
+    paddingRight: 12,
+    textAlign: 'right',
+  },
+});
 
-const Navigation = createAppContainer(
-  createSwitchNavigator(
-    {
-      SignIn: SignInScreen,
-      Table: TableDrawer,
-      Restaurant: RestaurantDrawer,
-    },
-    {
-      initialRouteName: "SignIn"
-    }
-  )
-);
-
-
-export default class AppContainer extends React.Component {
-
-  render() {
-    return (
-      <Context.Provider reducers={reducers} actions={actions}>
-        <Navigation/>
-      </Context.Provider>
-    );
-  }
-}
+export default App;
