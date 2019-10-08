@@ -9,15 +9,18 @@ import Context from "./context";
 import SignInScreen from "./src/views/login/SignInScreen.native";
 import HomeRestaurantScreen from "./src/views/restaurant/HomeRestaurantScreen.native";
 import HomeTableScreen from "./src/views/table/HomeTableScreen.native";
-import CreateAccountScreen from "./src/views/table/CreateAccountScreen.native";
+import CreateCustomerScreen from "./src/views/table/CreateCustomerScreen.native";
+import CreateWaiterScreen from "./src/views/restaurant/CreateWaiterScreen.native";
+import CreateCategoryScreen from "./src/views/restaurant/CreateCategoryScreen.native";
 
 const RestaurantDrawer = createDrawerNavigator(
   {
-    HomeRestaurant: HomeRestaurantScreen,
-    CreateAccount: CreateAccountScreen,
+    HomeRestaurantScreen: HomeRestaurantScreen,
+    CreateCategoryScreen: CreateCategoryScreen,
+    CreateWaiterScreen: CreateWaiterScreen,
   },
   {
-    initialRouteName: "HomeRestaurant",
+    initialRouteName: "HomeRestaurantScreen",
     // contentComponent: MainDrawer,
     // headerMode: "none",
     drawerWidth: () => Dimensions.get("window").width,
@@ -27,10 +30,10 @@ const RestaurantDrawer = createDrawerNavigator(
 
 const TableDrawer = createDrawerNavigator(
   {
-    HomeTable: HomeTableScreen,
+    HomeTableScreen: HomeTableScreen,
   },
   {
-    initialRouteName: "HomeTable",
+    initialRouteName: "HomeTableScreen",
     // contentComponent: MainDrawer,
     // headerMode: "none",
     drawerWidth: () => Dimensions.get("window").width,
@@ -41,12 +44,13 @@ const TableDrawer = createDrawerNavigator(
 const Navigation = createAppContainer(
   createSwitchNavigator(
     {
-      SignIn: SignInScreen,
+      SignInScreen: SignInScreen,
       Table: TableDrawer,
       Restaurant: RestaurantDrawer,
+      CreateCustomerScreen: CreateCustomerScreen,
     },
     {
-      initialRouteName: "SignIn"
+      initialRouteName: "SignInScreen"
     }
   )
 );

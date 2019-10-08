@@ -1,15 +1,16 @@
 import React from "react";
 import { ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View, Alert,} from "react-native";
 import ScreenWrapper from "../components/ScreenWrapper.native";
+import theme from "../helpers/theme";
 
 
-const CreateAccountScreen = (props) => {
+const CreateWaiterScreen = (props) => {
   const [name, setName] = React.useState("");
   const [username, setUsername] = React.useState("");
   const [password, setPassword] = React.useState("");
 
   const createAccount = () => {
-    return fetch("https://undefined.execute-api.us-east-1.amazonaws.com/dev/menu", {
+    return fetch("localhost:3001/waiter/create", {
       method: "POST",
       body: JSON.stringify({
         name: name,
@@ -17,13 +18,12 @@ const CreateAccountScreen = (props) => {
         password: password,
       })
     }).then((res) => {
-      Alert.alert("Cliente cadastrado!");
+      Alert.alert("Cliente cadastrado com sucesso!");
       console.log(res);
     }).catch((err) => {
       Alert.alert("Erro ao cadastrar o cliente");
       console.log(err);
     })
-
   };
 
   return (
@@ -45,15 +45,28 @@ const CreateAccountScreen = (props) => {
 
 
           <TouchableOpacity
+            style={theme.button}
             onPress={() => {
               createAccount()
                 .then(() => {
-                  props.navigation.navigate("HomeTable");
+                  props.navigation.navigate("HomeTableScreen");
                 });
             }}
           >
             <Text>
               Criar nova conta
+            </Text>
+          </TouchableOpacity>
+
+
+          <TouchableOpacity
+            style={theme.button}
+            onPress={() => {
+              props.navigation.navigate("HomeRestaurantScreen");
+            }}
+          >
+            <Text>
+              Voltar
             </Text>
           </TouchableOpacity>
 
@@ -63,8 +76,8 @@ const CreateAccountScreen = (props) => {
   );
 };
 
-CreateAccountScreen.navigationOptions = {
-  title: "CreateAccountScreen",
+CreateWaiterScreen.navigationOptions = {
+  title: "CreateCustomerScreen",
 };
 
 const styles = StyleSheet.create({
@@ -74,6 +87,6 @@ const styles = StyleSheet.create({
   },
 });
 
-CreateAccountScreen.propTypes = {};
+CreateWaiterScreen.propTypes = {};
 
-export default CreateAccountScreen;
+export default CreateWaiterScreen;

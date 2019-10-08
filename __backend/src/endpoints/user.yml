@@ -1,8 +1,0 @@
-
-updateUser:
-  handler: src/controllers/SpotController.v1
-  events:
-    - http:
-        path: /v1/user
-        method: put
-        cors: true

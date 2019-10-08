@@ -1,6 +1,7 @@
 import React from "react";
 import { Dimensions, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View, } from "react-native";
 import ScreenWrapper from "../components/ScreenWrapper.native";
+import theme from "../helpers/theme";
 
 
 const SignInScreen = (props) => {
@@ -23,8 +24,9 @@ const SignInScreen = (props) => {
             </View>
 
             <TouchableOpacity
+              style={theme.button}
               onPress={() => {
-                props.navigation.navigate("HomeTable");
+                props.navigation.navigate("Restaurant");
               }}
             >
               <Text>
@@ -33,8 +35,10 @@ const SignInScreen = (props) => {
             </TouchableOpacity>
 
             <TouchableOpacity
+              style={theme.button}
               onPress={() => {
-                props.navigation.navigate("CreateAccount", {userId: undefined,});
+
+                props.navigation.navigate("CreateCustomerScreen", {userId: undefined,});
               }}
             >
               <Text>
@@ -57,8 +61,8 @@ SignInScreen.navigationOptions = {
 const styles = StyleSheet.create({
   pageContent: {
     flex: 1,
-    marginHorizontal: 20,
-    marginVertical: 10,
+    paddingHorizontal: 20,
+    paddingVertical: 10,
     justifyContent: "center",
     height: Dimensions.get("window").height,
     backgroundColor: "#c800ff",

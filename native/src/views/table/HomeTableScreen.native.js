@@ -5,9 +5,10 @@ import {
   ScrollView,
   View,
   Text,
-  StatusBar,
+  StatusBar, TouchableOpacity,
 } from "react-native";
 import PropTypes from "prop-types";
+import theme from "../helpers/theme";
 
 
 const HomeTableScreen = (props) => {
@@ -19,6 +20,19 @@ const HomeTableScreen = (props) => {
           <View style={styles.pageContainer}>
             <View style={styles.pageContent}>
               <Text>Olá Mundo! Sou a tela HomeTable do React Native</Text>
+
+
+              <TouchableOpacity
+                style={theme.button}
+                onPress={() => {
+                      props.navigation.navigate("SignInScreen");
+                }}
+              >
+                <Text>
+                  Sair
+                </Text>
+              </TouchableOpacity>
+
             </View>
           </View>
         </ScrollView>

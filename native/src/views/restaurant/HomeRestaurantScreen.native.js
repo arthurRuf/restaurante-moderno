@@ -5,9 +5,10 @@ import {
   ScrollView,
   View,
   Text,
-  StatusBar,
+  StatusBar, TouchableOpacity,
 } from "react-native";
 import PropTypes from "prop-types";
+import theme from "../helpers/theme";
 
 
 const HomeRestaurantScreen = (props) => {
@@ -18,7 +19,43 @@ const HomeRestaurantScreen = (props) => {
         <ScrollView>
           <View style={styles.pageContainer}>
             <View style={styles.pageContent}>
-              <Text>Olá Mundo! Sou a tela HomeRestaurant do React Native</Text>
+              <Text>Menu</Text>
+              <TouchableOpacity
+                style={theme.button}
+                onPress={() => {
+                  props.navigation.navigate("CreateWaiterScreen");
+                }}
+              >
+                <Text>
+                  Cadastrar Garçom
+                </Text>
+              </TouchableOpacity>
+
+              <TouchableOpacity
+                style={theme.button}
+                onPress={() => {
+                  props.navigation.navigate("CreateCategoryScreen");
+                }}
+              >
+                <Text>
+                  Cadastrar Categoria
+                </Text>
+              </TouchableOpacity>
+
+
+              <TouchableOpacity
+                style={theme.button}
+                onPress={() => {
+                  props.navigation.navigate("SignInScreen");
+                }}
+              >
+                <Text>
+                  Sair
+                </Text>
+              </TouchableOpacity>
+
+
+
             </View>
           </View>
         </ScrollView>
