@@ -57,9 +57,8 @@ provider:
 #    - exclude-me-dir/**
 
 functions:
-
   menuGetByCategory:
-    handler: src/controllers/MenuController.getByCategory
+    handler: src/controllers/menuController.getByCategory
     events:
       - http:
           path: /menu
@@ -67,10 +66,34 @@ functions:
           cors: true
 
   menuCreateByCategory:
-    handler: src/controllers/MenuController.create
+    handler: src/controllers/menuController.create
     events:
       - http:
           path: /menu/create
+          method: post
+          cors: true
+
+  userCreate:
+    handler: src/controllers/userController.create
+    events:
+      - http:
+          path: /user/create
+          method: post
+          cors: true
+
+  userLogin:
+    handler: src/controllers/userController.login
+    events:
+      - http:
+          path: /user/login
+          method: get
+          cors: true
+
+  categoryCreate:
+    handler: src/controllers/categoryController.create
+    events:
+      - http:
+          path: /category/create
           method: post
           cors: true
 
@@ -127,7 +150,7 @@ functions:
 #       Value: "Some output value"
 
 plugins:
-#  - serverless-webpack
-#  - serverless-apigw-binary
-#  - serverless-domain-manager
+  #  - serverless-webpack
+  #  - serverless-apigw-binary
+  #  - serverless-domain-manager
   - serverless-offline # has to be the last one
