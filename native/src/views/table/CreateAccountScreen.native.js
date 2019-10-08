@@ -9,7 +9,7 @@ const CreateAccountScreen = (props) => {
   const [password, setPassword] = React.useState("");
 
   const createAccount = () => {
-    return fetch("google.com", {
+    return fetch("https://undefined.execute-api.us-east-1.amazonaws.com/dev/menu", {
       method: "POST",
       body: JSON.stringify({
         name: name,
