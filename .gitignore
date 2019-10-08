@@ -61,5 +61,5 @@ buck-out/
 #
 yarn.lock
 package.json.lock
-
+secret.txt
 !.idea
