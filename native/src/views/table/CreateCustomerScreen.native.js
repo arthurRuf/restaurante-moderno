@@ -10,7 +10,7 @@ const CreateCustomerScreen = (props) => {
   const [password, setPassword] = React.useState("");
 
   const createAccount = () => {
-    return fetch("localhost:3001/user/create", {
+    return fetch("http://localhost:3001/user/create", {
       method: "POST",
       body: JSON.stringify({
         name: name,

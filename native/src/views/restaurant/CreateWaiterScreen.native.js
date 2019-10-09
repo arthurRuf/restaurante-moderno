@@ -10,7 +10,7 @@ const CreateWaiterScreen = (props) => {
   const [password, setPassword] = React.useState("");
 
   const createAccount = () => {
-    return fetch("localhost:3001/waiter/create", {
+    return fetch("http://localhost:3001/waiter/create", {
       method: "POST",
       body: JSON.stringify({
         name: name,

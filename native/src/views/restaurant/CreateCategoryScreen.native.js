@@ -8,10 +8,10 @@ const CreateWaiterScreen = (props) => {
   const [name, setName] = React.useState("");
 
   const createAccount = () => {
-    return fetch("localhost:3001/category/create", {
+    return fetch("http://localhost:3001/category/create", {
       method: "POST",
       body: JSON.stringify({
-        name: name,
+        // name: name,
       })
     }).then((res) => {
       Alert.alert("Cliente cadastrado com sucesso!");
