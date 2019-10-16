@@ -10,7 +10,10 @@ import { HeaderHeight } from "../constants/utils";
 const { width, height } = Dimensions.get('screen');
 const thumbMeasure = (width - 48 - 32) / 3;
 
-export default class CadastraGarçom extends React.Component {
+export default class CadastraGarcom extends React.Component {
+
+  
+
   render() {
     return (
       <Block flex style={styles.profile}>
@@ -69,7 +72,7 @@ export default class CadastraGarçom extends React.Component {
                 {Images.Viewed.map((img, imgIndex) => (
                   <Image
                     source={{ uri: img }}
-                    key={`viewed-${img}`}  
+                    key={`viewed-${img}`}
                     resizeMode="cover"
                     style={styles.thumb}
                   />

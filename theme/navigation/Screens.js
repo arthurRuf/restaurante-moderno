@@ -10,7 +10,7 @@ import OnboardingScreen from '../screens/Onboarding';
 import ProfileScreen from '../screens/Profile';
 import ProScreen from '../screens/Pro';
 import SettingsScreen from '../screens/Settings';
-import CadastraGarçomScreen from '../screens/CadastraGarçom';
+import CadastraGarcomScreen from '../screens/CadastraGarcom';
 import CadastraClienteScreen from '../screens/CadastraCliente';
 import LoginScreen from '../screens/LoginScreen';
 
@@ -28,7 +28,7 @@ const transitionConfig = (transitionProps, prevTransitionProps) => ({
     const { layout, position, scene } = sceneProps;
     const thisSceneIndex = scene.index
     const width = layout.initWidth
-    
+
     const scale = position.interpolate({
       inputRange: [thisSceneIndex - 1, thisSceneIndex, thisSceneIndex + 1],
       outputRange: [4, 1, 1]
@@ -91,9 +91,9 @@ const ComponentsStack = createStackNavigator({
 });
 
 */
-const CadastraGarçom = createStackNavigator({
+const CadastraGarcom = createStackNavigator({
   Components: {
-    screen: CadastraGarçomScreen,
+    screen: CadastraGarcomScreen,
     navigationOptions: ({ navigation }) => ({
       header: <Header title="Cadastra Garçom" navigation={navigation} />,
     })
@@ -145,7 +145,7 @@ const HomeStack = createStackNavigator({
   },
 },
 {
-  cardStyle: { 
+  cardStyle: {
     backgroundColor: '#EEEEEE', //this is the backgroundColor for the app
   },
   transitionConfig,
@@ -166,7 +166,7 @@ const AppStack = createDrawerNavigator(
           <Drawer focused={focused} screen="Home" title="Home" />
         )
       }
-    },    
+    },
     Profile: {
       screen: ProfileStack,
       navigationOptions: (navOpt) => ({
@@ -197,8 +197,8 @@ const AppStack = createDrawerNavigator(
         drawerLabel: () => <Block style={{marginVertical: 8}}><Text>{` `}</Text></Block>,
       },
     },
-    CadastraGarçom: {
-      screen: CadastraGarçomScreen,
+    CadastraGarcom: {
+      screen: CadastraGarcomScreen,
       navigationOptions: (navOpt) => ({
         drawerLabel: ({focused}) => (
           <Drawer focused={focused} screen="CadastraGarçom" title="Cadastra Garçom" />
@@ -220,7 +220,7 @@ const AppStack = createDrawerNavigator(
           <Drawer focused={focused} screen="Login" title="Login" />
         ),
       }),
-    },         
+    },
   },
   Menu
 );
