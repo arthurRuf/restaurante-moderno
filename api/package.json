@@ -4,7 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "dev": "serverless offline start --port 3001",
+    "start": "serverless offline start --port 3001",
     "debug": "export SLS_DEBUG=* && node --inspect /usr/local/bin/serverless offline start --port 3001 --stage dev",
     "configure_publish": "sls config credentials -o --provider aws --key PUBLIC_KEUY --secret SECRET_KEY",
     "publish": "sls deploy",
