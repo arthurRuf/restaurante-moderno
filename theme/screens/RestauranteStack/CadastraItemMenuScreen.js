@@ -6,28 +6,28 @@ import { Header } from "../../components";
 
 const CadastraItemMenuScreen = (props) => {
   const [name, setName] = React.useState("");
-  const [username, setUsername] = React.useState("");
-  const [password, setPassword] = React.useState("");
+  const [description, setDescription] = React.useState("");
+  const [price, setPrice] = React.useState("");
 
   const save = () => {
     console.log("name", name);
-    console.log("username", username);
-    console.log("password", password);
+    console.log("description", description);
+    console.log("price", price);
 
     return fetch(
-      "https://kcyst4l620.execute-api.us-east-1.amazonaws.com/dev/waiter/create",
+      "https://kcyst4l620.execute-api.us-east-1.amazonaws.com/dev/itemmenu/create",
       {
         method: "POST",
         body: JSON.stringify({
           name: name,
-          username: username,
-          password: password,
+          description: description,
+          price: price,
         }),
       }).then((res) => {
-      Alert.alert("Cliente cadastrado com sucesso!");
+      Alert.alert("Item cadastrado com sucesso!");
       console.log(res);
     }).catch((err) => {
-      Alert.alert("Erro ao cadastrar o cliente");
+      Alert.alert("Erro ao cadastrar o item");
       console.log(err);
     });
   };
@@ -35,22 +35,22 @@ const CadastraItemMenuScreen = (props) => {
 
   return (
     <Block flex>
-      <Header title="Cadastra Garçom"/>
+      <Header title="Cadastra Item Menu"/>
       <KeyboardAvoidingView behavior="height" enabled>
         <Text>Nome</Text>
         <Input
           value={name}
           onChangeText={setName}
         />
-        <Text>Usuário</Text>
+        <Text>Descricao</Text>
         <Input
-          value={username}
-          onChangeText={setUsername}
+          value={description}
+          onChangeText={setDescription}
         />
-        <Text>Senha</Text>
+        <Text>Price</Text>
         <Input
-          value={password}
-          onChangeText={setPassword}
+          value={price}
+          onChangeText={setPrice}
         />
 
         <Button

@@ -1,7 +1,9 @@
 const mongoose = require('mongoose');
 
 const itemMenuSchema = new mongoose.Schema({
-	name: String
+	name: String,
+	description: String,
+	price: Number,
 });
 
 module.exports = connection => {
