@@ -1,4 +1,5 @@
 const order = require("../models/order");
+const itemMenu = require("../models/itemMenu");
 const database = require("../infra/database");
 const prepareResponse = require("../infra/prepareResponse");
 
@@ -26,31 +27,21 @@ module.exports = {
       let data = JSON.parse(event.body);
 
       // menu(connection).find({ company: "Pizzaria Ibiza" })
+      itemMenu(connection);
       order(connection)
-        .aggregate([
+        .find(
           {
-            $match: {...data.filter},
-          },
-          {
-            $lookup:
-              {
-                from: "itemmenus",
-                localField: "itemId",
-                foreignField: "_id",
-                as: "itemMenu",
-              },
-          },
-        ])
-        .then(orderList => {
+            ...data.filter,
+          })
+        .populate("itemMenu")
+        .exec(function(err, orderList) {
+          if (err) return console.log(err);
           connection.close();
           callback(null, prepareResponse(orderList));
-        })
-        .catch(err => {
-          console.log("err", err);
+          // prints "The author is Ian Fleming"
         });
     });
   },
-
 
   update(event, context, callback) {
     context.callbackWaitsForEmptyEventLoop = false;

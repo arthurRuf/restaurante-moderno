@@ -44,6 +44,7 @@ const Home = props => {
               <Product
                 product={item}
                 key={item._id}
+                tableNumber={props.navigation.getParam("tableNumber", "11")}
               />
             ))
           }

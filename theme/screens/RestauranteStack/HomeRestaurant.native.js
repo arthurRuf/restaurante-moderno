@@ -48,13 +48,14 @@ const HomeRestaurant = (props) => {
         body: JSON.stringify({
           filter: {
             status: "waiting",
-          }
+          },
         }),
         credentials: "same-origin",
       })
       .then(res => res.json())
       .then(response => {
-        setOrderList(response.data);
+        const orderListTemp = response.data;
+        setOrderList(orderListTemp);
       })
       .catch((err) => {
         console.log("err", JSON.stringify(err));
@@ -74,7 +75,11 @@ const HomeRestaurant = (props) => {
               return (
                 <Block key={item._id}>
                   <Text>{item.table}</Text>
-                  <Text>{(item.itemMenu||{}).title}</Text>
+                  <Text>
+                    {
+                      item.itemMenu.title
+                    }
+                  </Text>
                   <Button onPress={() => {
                     attendOrder(item._id);
                   }}>

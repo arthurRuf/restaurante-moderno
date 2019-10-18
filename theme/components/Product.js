@@ -18,8 +18,8 @@ const Product = props => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          table: props.table,
-          itemId: props.product._id,
+          table: props.tableNumber,
+          itemMenu: props.product._id.toString(),
           status: "waiting",
         }),
         credentials: "same-origin",

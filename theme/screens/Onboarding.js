@@ -47,7 +47,7 @@ const Onboarding = props => {
                 onPress={() =>{
                   console.log("tableNumber", tableNumber);
                   if (tableNumber === "") {
-                    Alert.alert("Por favor, informe o número da mesa.");
+                    Alert.alert("Por favor, informe o número da mesa.", {tableNumber: tableNumber});
                     return;
                   }
 
