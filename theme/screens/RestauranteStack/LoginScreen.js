@@ -1,13 +1,13 @@
 import React from "react";
-import { Dimensions, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View, } from "react-native";
-import ScreenWrapper from "../components/ScreenWrapper.native";
-import theme from "../helpers/theme";
+import { Dimensions, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
+import ScreenWrapper from "../../components/ScreenWrapper.native";
+import { Button, theme } from "galio-framework";
 
 
-const SignInScreen = (props) => {
+const Login = props => {
+
   const [username, setUsername] = React.useState("");
   const [password, setPassword] = React.useState("");
-
 
   return (
     <ScreenWrapper>
@@ -23,22 +23,22 @@ const SignInScreen = (props) => {
               <TextInput value={password} onChange={setPassword}/>
             </View>
 
-            <TouchableOpacity
+            <Button
               style={theme.button}
               onPress={() => {
-                props.navigation.navigate("Restaurant");
+                props.navigation.navigate("HomeRestaurant");
               }}
             >
               <Text>
                 Entrar
               </Text>
-            </TouchableOpacity>
+            </Button>
 
             <TouchableOpacity
               style={theme.button}
               onPress={() => {
 
-                props.navigation.navigate("CreateCustomerScreen", {userId: undefined,});
+                props.navigation.navigate("CreateCustomerScreen", {userId: undefined});
               }}
             >
               <Text>
@@ -54,9 +54,6 @@ const SignInScreen = (props) => {
   );
 };
 
-SignInScreen.navigationOptions = {
-  title: "Fazer Login",
-};
 
 const styles = StyleSheet.create({
   pageContent: {
@@ -74,6 +71,4 @@ const styles = StyleSheet.create({
   },
 });
 
-SignInScreen.propTypes = {};
-
-export default SignInScreen;
+export default Login;

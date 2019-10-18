@@ -23,7 +23,7 @@ export default class Components extends React.Component {
   };
 
   toggleSwitch = switchId => this.setState({ [switchId]: !this.state[switchId] });
-  
+
   renderButtons = () => {
     return (
       <Block flex>
@@ -92,7 +92,7 @@ export default class Components extends React.Component {
       </Block>
     )
   }
-  
+
   renderText = () => {
     return (
       <Block flex style={styles.group}>
@@ -109,7 +109,7 @@ export default class Components extends React.Component {
       </Block>
     )
   }
-  
+
   renderInputs = () => {
     return (
       <Block flex style={styles.group}>
@@ -126,7 +126,7 @@ export default class Components extends React.Component {
       </Block>
     )
   }
-  
+
   renderSwitches = () => {
     return (
       <Block flex style={styles.group}>
@@ -150,7 +150,7 @@ export default class Components extends React.Component {
       </Block>
     )
   }
-  
+
   renderTableCell = () => {
     const { navigation } = this.props;
     return (
@@ -169,7 +169,7 @@ export default class Components extends React.Component {
       </Block>
     )
   }
-  
+
   renderNavigation = () => {
     return (
       <Block flex style={styles.group}>
@@ -196,7 +196,7 @@ export default class Components extends React.Component {
       </Block>
     )
   }
-  
+
   renderSocial = () => {
     return (
       <Block flex style={styles.group}>
@@ -247,7 +247,7 @@ export default class Components extends React.Component {
       </Block>
     )
   }
-  
+
   renderCards = () => {
     return (
       <Block flex style={styles.group}>
@@ -276,7 +276,7 @@ export default class Components extends React.Component {
       </Block>
     )
   }
-  
+
   renderAlbum = () => {
     const { navigation } = this.props;
 
@@ -368,9 +368,6 @@ const styles = StyleSheet.create({
   },
   inputDefault: {
     borderBottomColor: materialTheme.COLORS.PLACEHOLDER,
-  },
-  inputTheme: {
-    borderBottomColor: materialTheme.COLORS.PRIMARY,
   },
   inputTheme: {
     borderBottomColor: materialTheme.COLORS.PRIMARY,

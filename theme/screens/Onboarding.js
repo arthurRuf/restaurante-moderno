@@ -1,15 +1,14 @@
 import React from 'react';
-import { ImageBackground, StyleSheet, StatusBar, Dimensions, Platform } from 'react-native';
-import { Block, Button, Text, theme } from 'galio-framework';
+import { ImageBackground, StyleSheet, StatusBar, Dimensions, Platform , Alert} from 'react-native';
+import { Block, Button, Input, Text, theme } from "galio-framework";
 
 const { height, width } = Dimensions.get('screen');
 
 import materialTheme from '../constants/Theme';
 import Images from '../constants/Images';
 
-export default class Onboarding extends React.Component {
-  render() {
-    const { navigation } = this.props;
+const Onboarding = props => {
+    const [tableNumber, setTableNumber] = React.useState("");
 
     return (
       <Block flex style={styles.container}>
@@ -34,19 +33,39 @@ export default class Onboarding extends React.Component {
               </Text>
             </Block>
             <Block center>
+              <Input
+                style={{fontSize: 24, color: "#000"}}
+                placeholder={"Número da Mesa"}
+                vaule={tableNumber}
+                onChange={setTableNumber}
+                />
               <Button
                 shadowless
                 style={styles.button}
                 color={materialTheme.COLORS.BUTTON_COLOR}
-                onPress={() => navigation.navigate('Home')}>
-                Let's bora
+                onPress={() => props.navigation.navigate('ClientStack')}>
+                Entrar como Cliente
+              </Button>
+              <Button
+                shadowless
+                style={[styles.button, { marginTop: 8}]}
+                color={"#333"}
+                onPress={() => {
+                  Alert.alert("tableNumber", tableNumber);
+                  if (tableNumber === "") {
+                    Alert.alert("Por favor, informe o número da mesa.");
+                    return;
+                  } else {
+                    props.navigation.navigate('RestaurantStack', {tableNumber: tableNumber});
+                  }
+                }}>
+                Acesso aos Garçons
               </Button>
             </Block>
           </Block>
         </Block>
       </Block>
     );
-  }
 }
 
 const styles = StyleSheet.create({
@@ -65,3 +84,6 @@ const styles = StyleSheet.create({
     shadowOpacity: 0,
   },
 });
+
+
+export  default  Onboarding;

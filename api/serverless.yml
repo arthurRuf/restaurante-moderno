@@ -73,6 +73,22 @@ functions:
           method: post
           cors: true
 
+  listWaiter:
+    handler: src/controllers/waiterController.list
+    events:
+      - http:
+          path: /waiter
+          method: post
+          cors: true
+
+  createWaiter:
+    handler: src/controllers/waiterController.create
+    events:
+      - http:
+          path: /waiter/create
+          method: post
+          cors: true
+
   userCreate:
     handler: src/controllers/userController.create
     events:

@@ -2,10 +2,10 @@ import React from 'react';
 import { StyleSheet, Dimensions, ScrollView } from 'react-native';
 import { Button, Block, Text, Input, theme } from 'galio-framework';
 
-import { Icon, Product } from '../components/';
+import { Icon, Product } from '../../components';
 
 const { width } = Dimensions.get('screen');
-import products from '../constants/products';
+import products from '../../constants/products';
 
 export default class Home extends React.Component {
   renderSearch = () => {
@@ -19,23 +19,23 @@ export default class Home extends React.Component {
         style={styles.search}
         iconContent={iconCamera}
         placeholder="O que deseja no cardapio?"
-        onFocus={() => navigation.navigate('Pro')}
+        onFocus={() => this.props.navigation.navigate('Pro')}
       />
     )
   }
-  
+
   renderTabs = () => {
     const { navigation } = this.props;
 
     return (
       <Block row style={styles.tabs}>
-        <Button shadowless style={[styles.tab, styles.divider]} onPress={() => navigation.navigate('Pro')}>
+        <Button shadowless style={[styles.tab, styles.divider]} onPress={() => this.props.navigation.navigate('Pro')}>
           <Block row middle>
             <Icon name="grid" family="feather" style={{ paddingRight: 8 }} />
             <Text size={16} style={styles.tabTitle}>Categorias</Text>
           </Block>
         </Button>
-        <Button shadowless style={styles.tab} onPress={() => navigation.navigate('Pro')}>
+        <Button shadowless style={styles.tab} onPress={() => this.props.navigation.navigate('Pro')}>
           <Block row middle>
             <Icon size={16} name="camera-18" family="GalioExtra" style={{ paddingRight: 8 }} />
             <Text size={16} style={styles.tabTitle}>QrCode</Text>
@@ -66,9 +66,9 @@ export default class Home extends React.Component {
 
   render() {
     return (
-    
+
       <Block flex center style={styles.home}>
-        
+
         {this.renderProducts()}
       </Block>
     );
@@ -77,7 +77,7 @@ export default class Home extends React.Component {
 
 const styles = StyleSheet.create({
   home: {
-    width: width,    
+    width: width,
   },
   search: {
     height: 48,
