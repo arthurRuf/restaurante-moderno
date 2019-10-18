@@ -3,64 +3,40 @@ import { Alert, KeyboardAvoidingView, Text, TextInput } from "react-native";
 import { Block, Button, Input, } from "galio-framework";
 import { Header } from "../../components";
 
-
 const ListaItemMenuScreen = (props) => {
-  const [name, setName] = React.useState("");
-  const [username, setUsername] = React.useState("");
-  const [password, setPassword] = React.useState("");
+  const [itemList, setItemList] = React.useState([]);
 
-  const save = () => {
-    console.log("name", name);
-    console.log("username", username);
-    console.log("password", password);
-
-    return fetch(
-      "https://kcyst4l620.execute-api.us-east-1.amazonaws.com/dev/waiter/create",
+  React.useEffect(() => {
+    fetch(
+      "https://kcyst4l620.execute-api.us-east-1.amazonaws.com/dev/waiter",
       {
         method: "POST",
         body: JSON.stringify({
-          name: name,
-          username: username,
-          password: password,
+          test: 1
         }),
-      }).then((res) => {
-      Alert.alert("Cliente cadastrado com sucesso!");
-      console.log(res);
-    }).catch((err) => {
-      Alert.alert("Erro ao cadastrar o cliente");
-      console.log(err);
-    });
-  };
+      })
+      .then(response => JSON.parse(response))
+      .then(response => {
+        setItemList(response.data)
+      })
+      .catch((err)=> {
+        console.log("err", err);
+        Alert.alert("Ops, algo deu errado!")
+      })
+  }, []);
 
 
   return (
     <Block flex>
-      <Header title="Cadastra Garçom"/>
+      <Header title="Listar Item"/>
       <KeyboardAvoidingView behavior="height" enabled>
-        <Text>Nome</Text>
-        <Input
-          value={name}
-          onChangeText={setName}
-        />
-        <Text>Usuário</Text>
-        <Input
-          value={username}
-          onChangeText={setUsername}
-        />
-        <Text>Senha</Text>
-        <Input
-          value={password}
-          onChangeText={setPassword}
-        />
-
-        <Button
-          center
-          onPress={() => {
-            save();
-          }}
-        >
-          Salvar
-        </Button>
+        {
+          itemList.map(item => {
+            return (
+              <Text>{item.name}</Text>
+             )
+          })
+        }
       </KeyboardAvoidingView>
     </Block>
   );
