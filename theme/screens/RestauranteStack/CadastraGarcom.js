@@ -1,5 +1,5 @@
 import React from "react";
-import { Alert, KeyboardAvoidingView } from "react-native";
+import { Alert, KeyboardAvoidingView,Text, TextInput } from "react-native";
 import { Block, Button, Input } from "galio-framework";
 import { Header } from "../../components";
 
@@ -33,9 +33,21 @@ const CadastraGarcom = (props) => {
     <Block flex>
       <Header title="Cadastra Garçom"/>
       <KeyboardAvoidingView behavior="height" enabled>
-        <Input label={"Nome"} value={name} onChange={setName}/>
-        <Input label={"Usuário"} value={username} onChange={setUsername}/>
-        <Input label={"Senha"} value={password} onChange={setPassword}/>
+        <Text>Nome</Text>
+        <TextInput
+          value={name}
+          onChange={e => setName(e)}
+        />
+        <Text>Usuário { JSON.stringify(username, function (k, v) { return k && v && typeof v !== "number" ? "" + v : v; })} // will expose arrays as strings.}</Text>
+        <TextInput
+          value={username}
+          onChange={e => setUsername(e)}
+        />
+        <Text>Senha</Text>
+        <TextInput
+          value={password}
+          onChange={e => setPassword(e)}
+        />
 
         <Button
           center
