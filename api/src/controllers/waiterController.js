@@ -23,12 +23,11 @@ module.exports = {
 	list(event, context, callback) {
 		context.callbackWaitsForEmptyEventLoop = false;
 		database.connect().then(connection => {
-			let data = JSON.parse(event.body);
+			// let data = JSON.parse(event.body);
 
 			// menu(connection).find({ company: "Pizzaria Ibiza" })
 			waiter(connection)
-				.find({ })
-				.then(waiterList => {
+				.find({ }, (err, waiterList) => {
 					connection.close();
 					callback(null, prepareResponse(waiterList));
 				})
