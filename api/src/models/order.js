@@ -1,7 +1,9 @@
 const mongoose = require('mongoose');
 
 const orderSchema = new mongoose.Schema({
-	name: String
+	table: String,
+	itemId: String,
+	status: String,
 });
 
 module.exports = connection => {

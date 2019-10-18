@@ -1,5 +1,5 @@
 import React from "react";
-import { Dimensions, ScrollView, StyleSheet } from "react-native";
+import { Alert, Dimensions, ScrollView, StyleSheet , ActivityIndicator,} from "react-native";
 import { Block, Button, Input, Text, theme } from "galio-framework";
 
 import { Icon, Product } from "../../components";
@@ -8,74 +8,62 @@ import Header from "../../components/Header";
 
 const {width} = Dimensions.get("screen");
 
-export default class Home extends React.Component {
-  renderSearch = () => {
-    const {navigation} = this.props;
-    const iconCamera = <Icon size={16} color={theme.COLORS.MUTED} name="zoom-in" family="material"/>;
+const Home = props => {
+ const [itemMenuList, setItemMenuList] = React.useState();
 
-    return (
-      <Input
-        right
-        color="black"
-        style={styles.search}
-        iconContent={iconCamera}
-        placeholder="O que deseja no cardapio?"
-        onFocus={() => this.props.navigation.navigate("Pro")}
-      />
-    );
-  };
+  React.useEffect(()=> {
+    fetch(
+      "https://kcyst4l620.execute-api.us-east-1.amazonaws.com/dev/itemmenu/",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+        }),
+        credentials: "same-origin",
+      })
+      .then(res => res.json())
+      .then(response => {
+        setItemMenuList(response.data)
+      })
+      .catch((err)=> {
+        console.log("err", JSON.stringify(err));
+        Alert.alert("Ops, algo deu errado!")
+      })
+  }, []);
 
-  renderTabs = () => {
-    const {navigation} = this.props;
-
-    return (
-      <Block row style={styles.tabs}>
-        <Button shadowless style={[styles.tab, styles.divider]} onPress={() => this.props.navigation.navigate("Pro")}>
-          <Block row middle>
-            <Icon name="grid" family="feather" style={{paddingRight: 8}}/>
-            <Text size={16} style={styles.tabTitle}>Categorias</Text>
-          </Block>
-        </Button>
-        <Button shadowless style={styles.tab} onPress={() => this.props.navigation.navigate("Pro")}>
-          <Block row middle>
-            <Icon size={16} name="camera-18" family="GalioExtra" style={{paddingRight: 8}}/>
-            <Text size={16} style={styles.tabTitle}>QrCode</Text>
-          </Block>
-        </Button>
-      </Block>
-    );
-  };
-//aqui adiciona vindo do banco
-
-  renderProducts = () => {
+  const renderProducts = () => {
     return (
       <ScrollView
         showsVerticalScrollIndicator={false}
         contentContainerStyle={styles.products}>
         <Block flex>
-          <Product product={products[0]} horizontal/>
-          <Block flex row>
-            <Product product={products[1]} style={{marginRight: theme.SIZES.BASE}}/>
-            <Product product={products[2]}/>
-          </Block>
-          <Product product={products[3]} horizontal/>
-          <Product product={products[4]} full/>
+          {
+            itemMenuList.map(item => (
+              <Product
+                product={item}
+                key={item._id}
+              />
+            ))
+          }
         </Block>
       </ScrollView>
     );
   };
 
-  render() {
     return (
       <React.Fragment>
         <Header search tabs title="Home"/>
         <Block flex center style={styles.home}>
-
-          {this.renderProducts()}
+          {
+            itemMenuList === undefined ?
+             <ActivityIndicator size={"large"} />:
+            renderProducts()
+          }
         </Block>
       </React.Fragment>
     );
-  }
 }
 
 const styles = StyleSheet.create({
@@ -127,3 +115,5 @@ const styles = StyleSheet.create({
     paddingVertical: theme.SIZES.BASE * 2,
   },
 });
+
+export default Home;

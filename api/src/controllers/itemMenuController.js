@@ -25,7 +25,6 @@ module.exports = {
 		database.connect().then(connection => {
 			let data = JSON.parse(event.body);
 
-			// menu(connection).find({ company: "Pizzaria Ibiza" })
 			itemMenu(connection)
 				.find({ })
 				.then(waiterList => {
@@ -37,4 +36,5 @@ module.exports = {
 				});
 		});
 	},
+
 };

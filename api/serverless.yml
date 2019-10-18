@@ -81,6 +81,15 @@ functions:
           method: post
           cors: true
 
+  deleteWaiter:
+    handler: src/controllers/waiterController.delete
+    events:
+      - http:
+          path: /waiter/delete
+          method: post
+          cors: true
+
+
   createWaiter:
     handler: src/controllers/waiterController.create
     events:
@@ -118,6 +127,22 @@ functions:
     events:
       - http:
           path: /order/create
+          method: post
+          cors: true
+
+  updateOrder:
+    handler: src/controllers/orderController.update
+    events:
+      - http:
+          path: /order/update
+          method: post
+          cors: true
+
+  attendOrder:
+    handler: src/controllers/orderController.attend
+    events:
+      - http:
+          path: /order/attend
           method: post
           cors: true
 
