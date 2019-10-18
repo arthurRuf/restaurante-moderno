@@ -28,7 +28,7 @@ const CreateWaiterScreen = (props) => {
         <View style={styles.pageContent}>
           <View>
             <Text>Name</Text>
-            <TextInput value={name} onChange={setName}/>
+            <TextInput value={name} onChangeText={setName}/>
           </View>
 
 

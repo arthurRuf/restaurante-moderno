@@ -38,13 +38,14 @@ const Onboarding = props => {
                 style={{fontSize: 24, color: "#000"}}
                 placeholder={"Número da Mesa"}
                 vaule={tableNumber}
-                onChange={setTableNumber}
+                onChangeText={setTableNumber}
                 />
               <Button
                 shadowless
                 style={styles.button}
                 color={materialTheme.COLORS.BUTTON_COLOR}
                 onPress={() =>{
+                  console.log("tableNumber", tableNumber);
                   if (tableNumber === "") {
                     Alert.alert("Por favor, informe o número da mesa.");
                     return;

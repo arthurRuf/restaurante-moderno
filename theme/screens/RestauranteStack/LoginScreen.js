@@ -21,8 +21,8 @@ const Login = props => {
   return (
     <Block flex>
       <KeyboardAvoidingView behavior="height" enabled>
-        <Input label={"Usuário"} value={username} onChange={setUsername}/>
-        <Input label={"Senha"} value={password} onChange={setPassword}/>
+        <Input label={"Usuário"} value={username} onChangeText={setUsername}/>
+        <Input label={"Senha"} value={password} onChangeText={setPassword}/>
 
         <Button
           center

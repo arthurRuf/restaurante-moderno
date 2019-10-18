@@ -89,6 +89,38 @@ functions:
           method: post
           cors: true
 
+  listItemMenu:
+    handler: src/controllers/itemMenuController.list
+    events:
+      - http:
+          path: /itemmenu
+          method: post
+          cors: true
+
+  createItemMenu:
+    handler: src/controllers/itemMenuController.create
+    events:
+      - http:
+          path: /itemmenu/create
+          method: post
+          cors: true
+
+  listOrder:
+    handler: src/controllers/orderController.list
+    events:
+      - http:
+          path: /order
+          method: post
+          cors: true
+
+  createOrder:
+    handler: src/controllers/orderController.create
+    events:
+      - http:
+          path: /order/create
+          method: post
+          cors: true
+
   userCreate:
     handler: src/controllers/userController.create
     events:
