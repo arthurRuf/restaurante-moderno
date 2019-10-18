@@ -12,11 +12,17 @@ const ListaGarcomScreen = (props) => {
       "https://kcyst4l620.execute-api.us-east-1.amazonaws.com/dev/waiter",
       {
         method: "POST",
-        body: {},
+        body: JSON.stringify({
+          test: 1
+        }),
       })
-      .then((response) => JSON.parse(response))
-      .then((response) => {
+      .then(response => JSON.parse(response))
+      .then(response => {
         setWaiterList(response.data)
+      })
+      .catch((err)=> {
+        console.log("err", err);
+        Alert.alert("Ops, algo deu errado!")
       })
   }, []);
 
