@@ -34,6 +34,7 @@ const Onboarding = props => {
             </Block>
             <Block center>
               <Input
+                autofocus={true}
                 style={{fontSize: 24, color: "#000"}}
                 placeholder={"Número da Mesa"}
                 vaule={tableNumber}
@@ -43,7 +44,15 @@ const Onboarding = props => {
                 shadowless
                 style={styles.button}
                 color={materialTheme.COLORS.BUTTON_COLOR}
-                onPress={() => props.navigation.navigate('ClientStack')}>
+                onPress={() =>{
+                  if (tableNumber === "") {
+                    Alert.alert("Por favor, informe o número da mesa.");
+                    return;
+                  }
+
+                  props.navigation.navigate('ClientStack');
+                }}
+              >
                 Entrar como Cliente
               </Button>
               <Button
@@ -51,13 +60,7 @@ const Onboarding = props => {
                 style={[styles.button, { marginTop: 8}]}
                 color={"#333"}
                 onPress={() => {
-                  Alert.alert("tableNumber", tableNumber);
-                  if (tableNumber === "") {
-                    Alert.alert("Por favor, informe o número da mesa.");
-                    return;
-                  } else {
-                    props.navigation.navigate('RestaurantStack', {tableNumber: tableNumber});
-                  }
+                  props.navigation.navigate("Login");
                 }}>
                 Acesso aos Garçons
               </Button>

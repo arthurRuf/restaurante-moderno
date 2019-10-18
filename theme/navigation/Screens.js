@@ -96,11 +96,10 @@ const Login = createStackNavigator({
 });
 
 
-const RestaurantStack = createStackNavigator({
+const RestaurantStack = createDrawerNavigator({
   HomeRestaurant: {
     screen: HomeRestaurant,
     navigationOptions: ({navigation}) => ({
-      header: <Header title="Cadastra Garçom"/>,
       DrawerLabel: ({focused}) => (
         <Drawer focused={focused} screen="CadastraGarçom" title="Cadastra Garçom"/>
       ),
@@ -109,7 +108,6 @@ const RestaurantStack = createStackNavigator({
   CadastraGarcon: {
     screen: CadastraGarcomScreen,
     navigationOptions: ({navigation}) => ({
-      header: <Header title="Cadastra Garçom"/>,
       DrawerLabel: ({focused}) => (
         <Drawer focused={focused} screen="CadastraGarçom" title="Cadastra Garçom"/>
       ),
@@ -139,13 +137,12 @@ const RestaurantStack = createStackNavigator({
 });
 
 
-const ClientStack = createStackNavigator({
+const ClientStack = createDrawerNavigator({
     Home: {
       screen: HomeScreen,
       navigationOptions: ({navigation}) => ({
-        header: <Header search tabs title="Home"/>,
         drawerLabel: ({focused}) => (
-          <Drawer focused={focused} screen="Settings" title="Settings"/>
+          <Drawer focused={focused} screen="Home" title="Cardápio"/>
         ),
       }),
     },
@@ -154,7 +151,7 @@ const ClientStack = createStackNavigator({
       navigationOptions: ({navigation}) => ({
         header: <Header back white transparent title=""/>,
         drawerLabel: ({focused}) => (
-          <Drawer focused={focused} screen="Settings" title="Settings"/>
+          <Drawer focused={focused} screen="Settings" title="Configurações"/>
         ),
         headerTransparent: true,
       }),

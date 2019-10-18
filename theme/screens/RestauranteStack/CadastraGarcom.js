@@ -31,6 +31,7 @@ const CadastraGarcom = (props) => {
 
   return (
     <Block flex>
+      <Header title="Cadastra Garçom"/>
       <KeyboardAvoidingView behavior="height" enabled>
         <Input label={"Nome"} value={name} onChange={setName}/>
         <Input label={"Usuário"} value={username} onChange={setUsername}/>
@@ -46,9 +47,7 @@ const CadastraGarcom = (props) => {
         </Button>
       </KeyboardAvoidingView>
     </Block>
-
   );
-
 };
 
 

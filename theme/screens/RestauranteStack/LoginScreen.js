@@ -1,56 +1,48 @@
 import React from "react";
-import { Dimensions, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
+import {
+  Alert,
+  Dimensions,
+  KeyboardAvoidingView,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import ScreenWrapper from "../../components/ScreenWrapper.native";
-import { Button, theme } from "galio-framework";
+import { Block, Button, Input, theme } from "galio-framework";
 
 
 const Login = props => {
-
   const [username, setUsername] = React.useState("");
   const [password, setPassword] = React.useState("");
 
   return (
-    <ScreenWrapper>
-      <ScrollView>
-        <View style={styles.pageContent}>
-          <View style={styles.center}>
-            <View>
-              <Text>Usuário</Text>
-              <TextInput value={username} onChange={setUsername}/>
-            </View>
-            <View>
-              <Text>Senha</Text>
-              <TextInput value={password} onChange={setPassword}/>
-            </View>
+    <Block flex>
+      <KeyboardAvoidingView behavior="height" enabled>
+        <Input label={"Usuário"} value={username} onChange={setUsername}/>
+        <Input label={"Senha"} value={password} onChange={setPassword}/>
 
-            <Button
-              style={theme.button}
-              onPress={() => {
-                props.navigation.navigate("HomeRestaurant");
-              }}
-            >
-              <Text>
-                Entrar
-              </Text>
-            </Button>
-
-            <TouchableOpacity
-              style={theme.button}
-              onPress={() => {
-
-                props.navigation.navigate("CreateCustomerScreen", {userId: undefined});
-              }}
-            >
-              <Text>
-                Criar uma nova conta
-              </Text>
-            </TouchableOpacity>
+        <Button
+          center
+          onPress={() => {
+            props.navigation.navigate("HomeRestaurant");
+          }}
+        >
+          Entrar
+        </Button>
 
 
-          </View>
-        </View>
-      </ScrollView>
-    </ScreenWrapper>
+        <Button
+          style={{marginTop: 8}}
+          onPress={() => {
+          }}
+        >
+          Voltar
+        </Button>
+      </KeyboardAvoidingView>
+    </Block>
   );
 };
 
