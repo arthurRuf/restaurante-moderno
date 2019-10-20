@@ -15,13 +15,13 @@ const CadastraItemMenuScreen = (props) => {
     console.log("password", password);
 
     return fetch(
-      "https://kcyst4l620.execute-api.us-east-1.amazonaws.com/dev/waiter/create",
+      "https://kcyst4l620.execute-api.us-east-1.amazonaws.com/dev/itemmenu/create",
       {
         method: "POST",
         body: JSON.stringify({
           name: name,
-          username: username,
-          password: password,
+          description: username,
+          price: password,
         }),
       }).then((res) => {
       Alert.alert("Cliente cadastrado com sucesso!");
