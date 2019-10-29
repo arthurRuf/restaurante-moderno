@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 
 const WaiterSchema = new mongoose.Schema({
+	// _id: mongoose.Schema.Types.ObjectId,
 	name: String,
 	username: String,
 	password: Number,

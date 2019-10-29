@@ -1,7 +1,10 @@
 const mongoose = require('mongoose');
 
 const orderSchema = new mongoose.Schema({
-	name: String
+	// _id: mongoose.Schema.Types.ObjectId,
+	table: String,
+	itemMenu: { type: mongoose.Schema.Types.ObjectId, ref: 'itemMenu' },
+	status: String,
 });
 
 module.exports = connection => {

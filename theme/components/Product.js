@@ -1,36 +1,69 @@
-import React from 'react';
-import { withNavigation } from 'react-navigation';
-import { StyleSheet, Dimensions, Image, TouchableWithoutFeedback } from 'react-native';
-import { Block, Text, theme } from 'galio-framework';
+import React from "react";
+import { withNavigation } from "react-navigation";
+import { Alert, Dimensions, Image, StyleSheet, TouchableWithoutFeedback } from "react-native";
+import { Block, Text, theme } from "galio-framework";
 
-import materialTheme from '../constants/Theme';
+const {width} = Dimensions.get("screen");
 
-const { width } = Dimensions.get('screen');
+const Product = props => {
+  const {navigation, product, horizontal, full, style, priceColor, imageStyle} = props;
+  const imageStyles = [styles.image, full ? styles.fullImage : styles.horizontalImage, imageStyle];
 
-class Product extends React.Component {
-  render() {
-    const { navigation, product, horizontal, full, style, priceColor, imageStyle } = this.props;
-    const imageStyles = [styles.image, full ? styles.fullImage : styles.horizontalImage, imageStyle];
+  const orderProduct = () => {
+    fetch(
+      "https://kcyst4l620.execute-api.us-east-1.amazonaws.com/dev/order/create",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          table: props.tableNumber,
+          itemMenu: props.product._id.toString(),
+          status: "waiting",
+        }),
+        credentials: "same-origin",
+      })
+      .then(response => {
+        Alert.alert("Feito!");
+      })
+      .catch((err) => {
+        console.log("err", JSON.stringify(err));
+        Alert.alert("Ops, algo deu errado!");
+      });
+  };
 
-    return (
+  return (
+    <TouchableWithoutFeedback onPress={() => {
+      Alert.alert(
+        `Tem certeza que deseja pedir ${props.product.name}?`,
+        '',
+        [
+          {
+            text: 'Não',
+            onPress: () => {},
+            style: 'cancel',
+          },
+          {
+            text: 'Sim',
+            onPress: () => orderProduct(props.product._id)
+          },
+        ],
+        {cancelable: true},
+      );
+    }}>
       <Block row={horizontal} card flex style={[styles.product, styles.shadow, style]}>
-        <TouchableWithoutFeedback onPress={() => navigation.navigate('Pro', { product: product })}>
-          <Block flex style={[styles.imageContainer, styles.shadow]}>
-            <Image source={{ uri: product.image }} style={imageStyles} />
-          </Block>
-        </TouchableWithoutFeedback>
-        <TouchableWithoutFeedback onPress={() => navigation.navigate('Pro', { product: product })}>
-          <Block flex space="between" style={styles.productDescription}>
-            <Text size={14} style={styles.productTitle}>{product.title}</Text>
-            <Text size={12} muted={!priceColor} color={priceColor}>${product.price}</Text>
-          </Block>
-        </TouchableWithoutFeedback>
+        <Block flex style={[styles.imageContainer, styles.shadow]}>
+          <Image source={{uri: product.image}} style={imageStyles}/>
+        </Block>
+        <Block flex space="between" style={styles.productDescription}>
+          <Text size={14} style={styles.productTitle}>{product.title}</Text>
+          <Text size={12} muted={!priceColor} color={priceColor}>${product.price}</Text>
+        </Block>
       </Block>
-    );
-  }
-}
-
-export default withNavigation(Product);
+    </TouchableWithoutFeedback>
+  );
+};
 
 const styles = StyleSheet.create({
   product: {
@@ -41,7 +74,7 @@ const styles = StyleSheet.create({
   },
   productTitle: {
     flex: 1,
-    flexWrap: 'wrap',
+    flexWrap: "wrap",
     paddingBottom: 6,
   },
   productDescription: {
@@ -57,7 +90,7 @@ const styles = StyleSheet.create({
   },
   horizontalImage: {
     height: 122,
-    width: 'auto',
+    width: "auto",
   },
   fullImage: {
     height: 215,
@@ -65,9 +98,11 @@ const styles = StyleSheet.create({
   },
   shadow: {
     shadowColor: theme.COLORS.BLACK,
-    shadowOffset: { width: 0, height: 2 },
+    shadowOffset: {width: 0, height: 2},
     shadowRadius: 4,
     shadowOpacity: 0.1,
     elevation: 2,
   },
 });
+
+export default withNavigation(Product);
