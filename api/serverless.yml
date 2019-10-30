@@ -98,19 +98,19 @@ functions:
           method: post
           cors: true
 
-  listItemMenu:
-    handler: src/controllers/itemMenuController.list
+  listProduct:
+    handler: src/controllers/productController.list
     events:
       - http:
-          path: /itemmenu
+          path: /product
           method: post
           cors: true
 
-  createItemMenu:
-    handler: src/controllers/itemMenuController.create
+  createProduct:
+    handler: src/controllers/productController.create
     events:
       - http:
-          path: /itemmenu/create
+          path: /product/create
           method: post
           cors: true
 

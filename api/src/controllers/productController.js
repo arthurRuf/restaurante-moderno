@@ -1,4 +1,4 @@
-const itemMenu = require('../models/itemMenu');
+const product = require('../models/product');
 const database = require('../infra/database');
 const prepareResponse = require('../infra/prepareResponse');
 
@@ -8,7 +8,7 @@ module.exports = {
 		database.connect().then(connection => {
 			let data = JSON.parse(event.body);
 
-			itemMenu(connection)
+			product(connection)
 				.create({ ...data })
 				.then(createdWaiter => {
 					connection.close();
@@ -16,6 +16,7 @@ module.exports = {
 				})
 				.catch(err => {
 					console.log('err', err);
+					callback(null, prepareResponse(err, 500));
 				});
 		});
 	},
@@ -25,7 +26,7 @@ module.exports = {
 		database.connect().then(connection => {
 			let data = JSON.parse(event.body);
 
-			itemMenu(connection)
+			product(connection)
 				.find({ })
 				.then(waiterList => {
 					connection.close();
@@ -33,6 +34,7 @@ module.exports = {
 				})
 				.catch(err => {
 					console.log('err', err);
+					callback(null, prepareResponse(err, 500));
 				});
 		});
 	},

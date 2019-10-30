@@ -1,28 +1,28 @@
 import React from "react";
 import { Alert, KeyboardAvoidingView, Text, TextInput } from "react-native";
-import { Block, Button, Input, } from "galio-framework";
+import { Block, Button, Input } from "galio-framework";
 import { Header } from "../../components";
 
-const ListaItemMenuScreen = (props) => {
+const ListaProductScreen = (props) => {
   const [itemList, setItemList] = React.useState([]);
 
   React.useEffect(() => {
     fetch(
-      "https://kcyst4l620.execute-api.us-east-1.amazonaws.com/dev/listamenu",
+      "https://kcyst4l620.execute-api.us-east-1.amazonaws.com/dev/product",
       {
         method: "POST",
         body: JSON.stringify({
-          test: 1
+          test: 1,
         }),
       })
       .then(response => JSON.parse(response))
       .then(response => {
-        setItemList(response.data)
+        setItemList(response.data);
       })
-      .catch((err)=> {
+      .catch((err) => {
         console.log("err", err);
-        Alert.alert("Ops, algo deu errado!")
-      })
+        Alert.alert("Ops, algo deu errado!");
+      });
   }, []);
 
 
@@ -34,7 +34,7 @@ const ListaItemMenuScreen = (props) => {
           itemList.map(item => {
             return (
               <Text>{item.name}</Text>
-             )
+            );
           })
         }
       </KeyboardAvoidingView>
@@ -43,4 +43,4 @@ const ListaItemMenuScreen = (props) => {
 };
 
 
-export default ListaItemMenuScreen;
+export default ListaProductScreen;

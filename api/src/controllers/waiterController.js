@@ -34,6 +34,7 @@ module.exports = {
         })
         .catch(err => {
           console.log("err", err);
+          callback(null, prepareResponse(err, 500));
         });
     });
   },
@@ -53,6 +54,7 @@ module.exports = {
         })
         .catch(err => {
           console.log("err", err);
+          callback(null, prepareResponse(err, 500));
         });
     });
   },

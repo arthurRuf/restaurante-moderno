@@ -1,5 +1,5 @@
 import React from "react";
-import { Alert, Dimensions, ScrollView, StyleSheet , ActivityIndicator,} from "react-native";
+import { Alert, Dimensions, ScrollView, StyleSheet, ActivityIndicator } from "react-native";
 import { Block, Button, Input, Text, theme } from "galio-framework";
 
 import { Icon, Product } from "../../components";
@@ -9,9 +9,9 @@ import Header from "../../components/Header";
 const {width} = Dimensions.get("screen");
 
 const Home = props => {
- const [itemMenuList, setItemMenuList] = React.useState();
+  const [itemMenuList, setItemMenuList] = React.useState();
 
-  React.useEffect(()=> {
+  React.useEffect(() => {
     fetch(
       "https://kcyst4l620.execute-api.us-east-1.amazonaws.com/dev/itemmenu/",
       {
@@ -19,18 +19,17 @@ const Home = props => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-        }),
+        body: JSON.stringify({}),
         credentials: "same-origin",
       })
       .then(res => res.json())
       .then(response => {
-        setItemMenuList(response.data)
+        setItemMenuList(response.data);
       })
-      .catch((err)=> {
+      .catch((err) => {
         console.log("err", JSON.stringify(err));
-        Alert.alert("Ops, algo deu errado!")
-      })
+        Alert.alert("Ops, algo deu errado!");
+      });
   }, []);
 
   const renderProducts = () => {
@@ -53,19 +52,19 @@ const Home = props => {
     );
   };
 
-    return (
-      <React.Fragment>
-        <Header search tabs title="Home"/>
-        <Block flex center style={styles.home}>
-          {
-            itemMenuList === undefined ?
-             <ActivityIndicator size={"large"} />:
+  return (
+    <React.Fragment>
+      <Header search tabs title="Home"/>
+      <Block flex center style={styles.home}>
+        {
+          itemMenuList === undefined ?
+            <ActivityIndicator size={"large"}/> :
             renderProducts()
-          }
-        </Block>
-      </React.Fragment>
-    );
-}
+        }
+      </Block>
+    </React.Fragment>
+  );
+};
 
 const styles = StyleSheet.create({
   home: {

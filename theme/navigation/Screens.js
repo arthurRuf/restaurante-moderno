@@ -23,7 +23,7 @@ import { Drawer } from "../components/";
 import HomeRestaurant from "../screens/RestauranteStack/HomeRestaurant.native";
 import CadastraItemMenuScreen from "../screens/RestauranteStack/CadastraItemMenuScreen";
 import ListaGarcomScreen from "../screens/RestauranteStack/ListaGarcomScreen";
-import ListaItemMenuScreen from "../screens/RestauranteStack/ListaItemMenuScreen";
+import ListaProductScreen from "../screens/RestauranteStack/ListaProductScreen";
 
 const transitionConfig = (transitionProps, prevTransitionProps) => ({
   transitionSpec: {
@@ -130,7 +130,7 @@ const RestaurantStack = createDrawerNavigator({
     }),
   },
   ListaItemMenuScreen: {
-    screen: ListaItemMenuScreen,
+    screen: ListaProductScreen,
     navigationOptions: ({navigation}) => ({
       DrawerLabel: ({focused}) => (
         <Drawer focused={focused} screen="ListaGarcomScreen" title="Ítens do Cardápio"/>

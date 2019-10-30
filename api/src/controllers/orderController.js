@@ -1,5 +1,5 @@
 const order = require("../models/order");
-const itemMenu = require("../models/itemMenu");
+const itemMenu = require("../models/product");
 const database = require("../infra/database");
 const prepareResponse = require("../infra/prepareResponse");
 
@@ -17,6 +17,7 @@ module.exports = {
         })
         .catch(err => {
           console.log("err", err);
+          callback(null, prepareResponse(err, 500));
         });
     });
   },
@@ -35,7 +36,10 @@ module.exports = {
           })
         .populate("itemMenu")
         .exec(function(err, orderList) {
-          if (err) return console.log(err);
+          if (err) {
+            console.log(err);
+            callback(null, prepareResponse(err, 500));
+          }
           connection.close();
           callback(null, prepareResponse(orderList));
           // prints "The author is Ian Fleming"
@@ -60,6 +64,7 @@ module.exports = {
         })
         .catch(err => {
           console.log("err", err);
+          callback(null, prepareResponse(err, 500));
         });
     });
   },
@@ -82,6 +87,7 @@ module.exports = {
         })
         .catch(err => {
           console.log("err", err);
+          callback(null, prepareResponse(err, 500));
         });
     });
   },
