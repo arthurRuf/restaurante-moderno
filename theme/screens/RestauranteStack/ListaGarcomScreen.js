@@ -40,7 +40,7 @@ const ListaGarcomScreen = (props) => {
 
   React.useEffect(() => {
     fetch(
-      "https://kcyst4l620.execute-api.us-east-1.amazonaws.com/dev/waiter/",
+      "https://kcyst4l620.execute-api.us-east-1.amazonaws.com/dev/waiter",
       {
         method: "POST",
         headers: {
