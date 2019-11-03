@@ -57,7 +57,7 @@ const Product = props => {
           <Image source={{uri: product.image}} style={imageStyles}/>
         </Block>
         <Block flex space="between" style={styles.productDescription}>
-          <Text size={14} style={styles.productTitle}>{product.title}</Text>
+          <Text size={14} style={styles.productTitle}>{product.name}</Text>
           <Text size={12} muted={!priceColor} color={priceColor}>${product.price}</Text>
         </Block>
       </Block>

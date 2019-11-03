@@ -1,17 +1,16 @@
 {
   "name": "project-restaurant",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
     "start": "serverless offline start --port 3001",
     "debug": "export SLS_DEBUG=* && node --inspect /usr/local/bin/serverless offline start --port 3001 --stage dev",
     "configure_publish": "sls config credentials -o --provider aws --key PUBLIC_KEUY --secret SECRET_KEY",
-    "publish": "sls deploy",
+    "deploy": "sls deploy",
     "dashboard": "serverless dashboard"
   },
   "dependencies": {
-    "multer": "^1.4.2",
     "aws-sdk": "^2.437.0",
     "axios": "^0.18.0",
     "bcrypt": "^3.0.6",
@@ -24,6 +23,7 @@
     "jsonschema": "^1.2.4",
     "jsonwebtoken": "^8.5.0",
     "mongoose": "^5.5.0",
+    "multer": "^1.4.2",
     "node-fetch": "^2.4.1",
     "node-gyp": "^3.8.0",
     "node-pre-gyp": "^0.12.0",
@@ -34,13 +34,13 @@
     "url": "^0.11.0"
   },
   "devDependencies": {
-    "nodemon": "^1.19.3",
     "@babel/core": "^7.4.4",
     "@babel/polyfill": "^7.4.4",
     "@babel/preset-env": "^7.4.4",
     "@babel/preset-react": "^7.0.0",
     "babel-core": "^6.26.3",
     "babel-loader": "^8.0.5",
+    "nodemon": "^1.19.3",
     "serverless-apigw-binary": "^0.4.4",
     "serverless-domain-manager": "^2.6.11",
     "serverless-http": "^1.8.0",

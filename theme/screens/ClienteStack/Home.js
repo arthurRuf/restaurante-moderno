@@ -13,7 +13,7 @@ const Home = props => {
 
   React.useEffect(() => {
     fetch(
-      "https://kcyst4l620.execute-api.us-east-1.amazonaws.com/dev/itemmenu/",
+      "https://kcyst4l620.execute-api.us-east-1.amazonaws.com/dev/product/",
       {
         method: "POST",
         headers: {

@@ -1,5 +1,5 @@
 const order = require("../models/order");
-const itemMenu = require("../models/product");
+const product = require("../models/product");
 const database = require("../infra/database");
 const prepareResponse = require("../infra/prepareResponse");
 
@@ -28,13 +28,13 @@ module.exports = {
       let data = JSON.parse(event.body);
 
       // menu(connection).find({ company: "Pizzaria Ibiza" })
-      itemMenu(connection);
+      product(connection);
       order(connection)
         .find(
           {
             ...data.filter,
           })
-        .populate("itemMenu")
+        .populate("productList")
         .exec(function(err, orderList) {
           if (err) {
             console.log(err);
