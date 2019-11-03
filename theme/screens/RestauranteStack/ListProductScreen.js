@@ -3,8 +3,8 @@ import { Alert, KeyboardAvoidingView, Text, TextInput } from "react-native";
 import { Block, Button, Input } from "galio-framework";
 import { Header } from "../../components";
 
-const ListaProductScreen = (props) => {
-  const [itemList, setItemList] = React.useState([]);
+const ListProductScreen = (props) => {
+  const [productList, setProductList] = React.useState([]);
 
   React.useEffect(() => {
     fetch(
@@ -17,7 +17,7 @@ const ListaProductScreen = (props) => {
       })
       .then(response => JSON.parse(response))
       .then(response => {
-        setItemList(response.data);
+        setProductList(response.data);
       })
       .catch((err) => {
         console.log("err", err);
@@ -31,7 +31,7 @@ const ListaProductScreen = (props) => {
       <Header title="Listar Item"/>
       <KeyboardAvoidingView behavior="height" enabled>
         {
-          itemList.map(item => {
+          productList.map(item => {
             return (
               <Text>{item.name}</Text>
             );
@@ -43,4 +43,4 @@ const ListaProductScreen = (props) => {
 };
 
 
-export default ListaProductScreen;
+export default ListProductScreen;

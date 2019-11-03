@@ -21,9 +21,9 @@ import Menu from "./Menu";
 import Header from "../components/Header";
 import { Drawer } from "../components/";
 import HomeRestaurant from "../screens/RestauranteStack/HomeRestaurant.native";
-import CadastraItemMenuScreen from "../screens/RestauranteStack/CadastraItemMenuScreen";
-import ListaGarcomScreen from "../screens/RestauranteStack/ListaGarcomScreen";
-import ListaProductScreen from "../screens/RestauranteStack/ListaProductScreen";
+import RegisterProductScreen from "../screens/RestauranteStack/CadastraItemMenuScreen";
+import ListWaiterScreen from "../screens/RestauranteStack/ListaGarcomScreen";
+import ListProductScreen from "../screens/RestauranteStack/ListaProductScreen";
 
 const transitionConfig = (transitionProps, prevTransitionProps) => ({
   transitionSpec: {
@@ -117,7 +117,7 @@ const RestaurantStack = createDrawerNavigator({
     }),
   },
   ListaGarcomScreen: {
-    screen: ListaGarcomScreen,
+    screen: ListWaiterScreen,
     navigationOptions: ({navigation}) => ({
       DrawerLabel: ({focused}) => (
         <Drawer focused={focused} screen="ListaGarcomScreen" title="Listar Garçons"/>
@@ -125,12 +125,12 @@ const RestaurantStack = createDrawerNavigator({
     }),
   },
   CadastraItemMenu: {
-    screen: CadastraItemMenuScreen,
+    screen: RegisterProductScreen,
     navigationOptions: ({navigation}) => ({
     }),
   },
   ListaItemMenuScreen: {
-    screen: ListaProductScreen,
+    screen: ListProductScreen,
     navigationOptions: ({navigation}) => ({
       DrawerLabel: ({focused}) => (
         <Drawer focused={focused} screen="ListaGarcomScreen" title="Ítens do Cardápio"/>

@@ -4,7 +4,7 @@ import { Block, Button } from "galio-framework";
 import { Header } from "../../components";
 
 
-const ListaGarcomScreen = (props) => {
+const ListWaiterScreen = (props) => {
   const [waiterList, setWaiterList] = React.useState(undefined);
 
   const deleteWaiter = (id) => {
@@ -86,4 +86,4 @@ const ListaGarcomScreen = (props) => {
 };
 
 
-export default ListaGarcomScreen;
+export default ListWaiterScreen;

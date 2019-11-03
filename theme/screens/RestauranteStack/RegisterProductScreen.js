@@ -4,7 +4,7 @@ import { Block, Button, Input, } from "galio-framework";
 import { Header } from "../../components";
 
 
-const CadastraItemMenuScreen = (props) => {
+const RegisterProductScreen = (props) => {
   const [name, setName] = React.useState("");
   const [description, setDescription] = React.useState("");
   const [price, setPrice] = React.useState("");
@@ -17,7 +17,7 @@ const CadastraItemMenuScreen = (props) => {
     console.log("img", img);
 
     return fetch(
-      "https://kcyst4l620.execute-api.us-east-1.amazonaws.com/dev/itemmenu/create",
+      "https://kcyst4l620.execute-api.us-east-1.amazonaws.com/dev/product/create",
       {
         method: "POST",
         body: JSON.stringify({
@@ -74,4 +74,4 @@ const CadastraItemMenuScreen = (props) => {
 };
 
 
-export default CadastraItemMenuScreen;
+export default RegisterProductScreen;

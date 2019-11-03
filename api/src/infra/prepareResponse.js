@@ -1,6 +1,7 @@
 
 
 module.exports = (data = {}, statusCode=200) => {
+  console.log("data", data);
   return {
     statusCode: statusCode,
     headers: {

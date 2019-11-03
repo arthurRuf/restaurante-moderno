@@ -4,7 +4,7 @@ import { Block, Button, Input, } from "galio-framework";
 import { Header } from "../../components";
 
 
-const CadastraGarcom = (props) => {
+const RegisterWaiter = (props) => {
   const [name, setName] = React.useState("");
   const [username, setUsername] = React.useState("");
   const [password, setPassword] = React.useState("");
@@ -67,4 +67,4 @@ const CadastraGarcom = (props) => {
 };
 
 
-export default CadastraGarcom;
+export default RegisterWaiter;

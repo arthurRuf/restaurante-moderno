@@ -22,7 +22,7 @@ module.exports = {
       if (!createdItem) {
         throw new Error("Wrong Credentials");
       }
-      connection.close();
+      // connection.close();
       return prepareResponse(createdItem._doc);
 
     } catch (err) {
@@ -46,7 +46,7 @@ module.exports = {
       if (!list) {
         throw new Error(list);
       }
-      connection.close();
+      // connection.close();
       return prepareResponse(list);
 
     } catch (err) {
