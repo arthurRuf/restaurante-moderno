@@ -11,7 +11,7 @@ module.exports = {
       waiter(connection)
         .create({...data})
         .then(createdWaiter => {
-          connection.close();
+          // connection.close();
           callback(null, prepareResponse(createdWaiter));
         })
         .catch(err => {
@@ -29,7 +29,7 @@ module.exports = {
       waiter(connection)
         .find({})
         .then((waiterList) => {
-          connection.close();
+          // connection.close();
           callback(null, prepareResponse(waiterList));
         })
         .catch(err => {
