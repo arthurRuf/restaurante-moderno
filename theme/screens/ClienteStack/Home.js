@@ -10,6 +10,39 @@ const {width} = Dimensions.get("screen");
 
 const Home = props => {
   const [itemMenuList, setItemMenuList] = React.useState();
+  const [order, setOrder] = React.useState({
+    "table": "",
+    "productList": [],
+    "status": "waiting",
+  });
+
+  const orderProduct = () => {
+    fetch(
+      "https://kcyst4l620.execute-api.us-east-1.amazonaws.com/dev/order/create",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          ...order,
+        }),
+        credentials: "same-origin",
+      })
+      .then(response => {
+        Alert.alert("Feito!");
+        setOrder({
+          "table": "",
+          "productList": [],
+          "status": "waiting",
+        });
+      })
+      .catch((err) => {
+        console.log("err", JSON.stringify(err));
+        Alert.alert("Ops, algo deu errado!");
+      });
+  };
+
 
   React.useEffect(() => {
     fetch(
@@ -44,6 +77,13 @@ const Home = props => {
                 product={item}
                 key={item._id}
                 tableNumber={props.navigation.getParam("tableNumber", "11")}
+                onOrder={(productId) => {
+                  setOrder({
+                    "table": props.navigation.getParam("tableNumber", "11"),
+                    "productList": order.productList.concat(productId),
+                    "status": "waiting",
+                  });
+                }}
               />
             ))
           }

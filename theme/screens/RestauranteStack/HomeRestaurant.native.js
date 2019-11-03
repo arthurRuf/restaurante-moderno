@@ -77,7 +77,8 @@ const HomeRestaurant = (props) => {
                   <Text>{item.table}</Text>
                   <Text>
                     {
-                      item.itemMenu.title
+                      item.productList
+                        .map(product => product.name)
                     }
                   </Text>
                   <Button onPress={() => {

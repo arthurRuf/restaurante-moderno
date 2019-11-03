@@ -9,30 +9,6 @@ const Product = props => {
   const {navigation, product, horizontal, full, style, priceColor, imageStyle} = props;
   const imageStyles = [styles.image, full ? styles.fullImage : styles.horizontalImage, imageStyle];
 
-  const orderProduct = () => {
-    fetch(
-      "https://kcyst4l620.execute-api.us-east-1.amazonaws.com/dev/order/create",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          table: props.tableNumber,
-          itemMenu: props.product._id.toString(),
-          status: "waiting",
-        }),
-        credentials: "same-origin",
-      })
-      .then(response => {
-        Alert.alert("Feito!");
-      })
-      .catch((err) => {
-        console.log("err", JSON.stringify(err));
-        Alert.alert("Ops, algo deu errado!");
-      });
-  };
-
   return (
     <TouchableWithoutFeedback onPress={() => {
       Alert.alert(
@@ -46,7 +22,7 @@ const Product = props => {
           },
           {
             text: 'Sim',
-            onPress: () => orderProduct(props.product._id)
+            onPress: () => props.onOrder(props.product._id)
           },
         ],
         {cancelable: true},
