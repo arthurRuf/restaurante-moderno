@@ -13,17 +13,16 @@ import OnboardingScreen from "../screens/Onboarding";
 import ProfileScreen from "../screens/Profile";
 import ProScreen from "../screens/Pro";
 import SettingsScreen from "../screens/Settings";
-import CadastraGarcomScreen from "../screens/RestauranteStack/CadastraGarcom";
-import CadastraClienteScreen from "../screens/CadastraCliente";
 import LoginScreen from "../screens/RestauranteStack/LoginScreen";
 
 import Menu from "./Menu";
 import Header from "../components/Header";
 import { Drawer } from "../components/";
 import HomeRestaurant from "../screens/RestauranteStack/HomeRestaurant.native";
-import RegisterProductScreen from "../screens/RestauranteStack/CadastraItemMenuScreen";
-import ListWaiterScreen from "../screens/RestauranteStack/ListaGarcomScreen";
-import ListProductScreen from "../screens/RestauranteStack/ListaProductScreen";
+import RegisterProductScreen from "../screens/RestauranteStack/RegisterProductScreen";
+import RegisterWaiterScreen from "../screens/RestauranteStack/RegisterWaiterScreen";
+import ListWaiterScreen from "../screens/RestauranteStack/ListWaiterScreen";
+import ListProductScreen from "../screens/RestauranteStack/ListProductScreen";
 
 const transitionConfig = (transitionProps, prevTransitionProps) => ({
   transitionSpec: {
@@ -104,36 +103,39 @@ const RestaurantStack = createDrawerNavigator({
     screen: HomeRestaurant,
     navigationOptions: ({navigation}) => ({
       DrawerLabel: ({focused}) => (
-        <Drawer focused={focused} screen="CadastraGarçom" title="Cadastra Garçom"/>
+        <Drawer focused={focused} screen="HomeRestaurant" title="Home"/>
       ),
     }),
   },
-  CadastraGarcon: {
-    screen: CadastraGarcomScreen,
+  RegisterWaiterScreen: {
+    screen: RegisterWaiterScreen,
     navigationOptions: ({navigation}) => ({
       DrawerLabel: ({focused}) => (
-        <Drawer focused={focused} screen="CadastraGarçom" title="Cadastrar Garçom"/>
+        <Drawer focused={focused} screen="RegisterWaiterScreen" title="Cadastrar Garçom"/>
       ),
     }),
   },
-  ListaGarcomScreen: {
+  ListWaiterScreen: {
     screen: ListWaiterScreen,
     navigationOptions: ({navigation}) => ({
       DrawerLabel: ({focused}) => (
-        <Drawer focused={focused} screen="ListaGarcomScreen" title="Listar Garçons"/>
+        <Drawer focused={focused} screen="ListWaiterScreen" title="Listar Garçons"/>
       ),
     }),
   },
-  CadastraItemMenu: {
+  RegisterProductScreen: {
     screen: RegisterProductScreen,
     navigationOptions: ({navigation}) => ({
+      DrawerLabel: ({focused}) => (
+        <Drawer focused={focused} screen="RegisterProductScreen" title="Cadastrar Produto"/>
+      ),
     }),
   },
-  ListaItemMenuScreen: {
+  ListProductScreen: {
     screen: ListProductScreen,
     navigationOptions: ({navigation}) => ({
       DrawerLabel: ({focused}) => (
-        <Drawer focused={focused} screen="ListaGarcomScreen" title="Ítens do Cardápio"/>
+        <Drawer focused={focused} screen="ListProductScreen" title="Listar Produtos"/>
       ),
     }),
   },

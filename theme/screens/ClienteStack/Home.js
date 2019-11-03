@@ -16,7 +16,7 @@ const Home = props => {
     "status": "waiting",
   });
 
-  const orderProduct = () => {
+  const registerOrder = () => {
     fetch(
       "https://kcyst4l620.execute-api.us-east-1.amazonaws.com/dev/order/create",
       {
@@ -102,6 +102,24 @@ const Home = props => {
             renderProducts()
         }
       </Block>
+      <Button onlyIcon icon="tags"
+              iconFamily="antdesign"
+              iconSize={30}
+              color="warning"
+              iconColor="#fff"
+              onPress={()=> {
+                registerOrder();
+              }}
+              style={{
+                width: 80,
+                height: 80,
+                position: "absolute",
+                bottom: 24,
+                right: 24,
+              }}
+      >
+        warning
+      </Button>
     </React.Fragment>
   );
 };
