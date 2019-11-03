@@ -4,30 +4,24 @@ import { Block, Button, Input, } from "galio-framework";
 import { Header } from "../../components";
 
 
-const RegisterWaiterScreen = (props) => {
+const RegisterCategoryScreen = (props) => {
   const [name, setName] = React.useState("");
-  const [username, setUsername] = React.useState("");
-  const [password, setPassword] = React.useState("");
 
   const save = () => {
     console.log("name", name);
-    console.log("username", username);
-    console.log("password", password);
 
     return fetch(
-      "https://kcyst4l620.execute-api.us-east-1.amazonaws.com/dev/waiter/create",
+      "https://kcyst4l620.execute-api.us-east-1.amazonaws.com/dev/category/create",
       {
         method: "POST",
         body: JSON.stringify({
           name: name,
-          username: username,
-          password: password,
         }),
       }).then((res) => {
-      Alert.alert("Garçom cadastrado com sucesso!");
+      Alert.alert("Categoria cadastrada com sucesso!");
       console.log(res);
     }).catch((err) => {
-      Alert.alert("Erro ao cadastrar o Garçom");
+      Alert.alert("Erro ao cadastrar a Categoria");
       console.log(err);
     });
   };
@@ -35,23 +29,14 @@ const RegisterWaiterScreen = (props) => {
 
   return (
     <Block flex>
-      <Header title="Cadastra Garçom"/>
+      <Header title="Cadastra Categoria"/>
       <KeyboardAvoidingView behavior="height" enabled>
         <Text>Nome</Text>
         <Input
           value={name}
           onChangeText={setName}
         />
-        <Text>Usuário</Text>
-        <Input
-          value={username}
-          onChangeText={setUsername}
-        />
-        <Text>Senha</Text>
-        <Input
-          value={password}
-          onChangeText={setPassword}
-        />
+
 
         <Button
           center
@@ -67,4 +52,4 @@ const RegisterWaiterScreen = (props) => {
 };
 
 
-export default RegisterWaiterScreen;
+export default RegisterCategoryScreen;

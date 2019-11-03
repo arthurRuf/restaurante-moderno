@@ -12,7 +12,7 @@ module.exports = {
 			menu(connection)
 				.find({ categories: data.category })
 				.then(menuList => {
-					connection.close();
+					// connection.close();
 					callback(null, prepareResponse(menuList));
 				})
 				.catch(err => {
@@ -30,7 +30,7 @@ module.exports = {
 			menu(connection)
 				.create({ ...data })
 				.then(menu => {
-					connection.close();
+					// connection.close();
 					callback(null, prepareResponse(menu));
 				})
 				.catch(err => {

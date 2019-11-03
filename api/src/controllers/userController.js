@@ -11,7 +11,7 @@ module.exports = {
 			user(connection)
 				.create({ ...data })
 				.then(userCreated => {
-					connection.close();
+					// connection.close();
 					callback(null, prepareResponse(userCreated));
 				})
 				.catch(err => {
@@ -29,7 +29,7 @@ module.exports = {
 			user(connection)
 				.find({ email: data.email, password: data.password })
 				.then(userFound => {
-					connection.close();
+					// connection.close();
 					callback(null, prepareResponse(userFound));
 				})
 				.catch(err => {

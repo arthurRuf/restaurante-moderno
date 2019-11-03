@@ -12,7 +12,7 @@ module.exports = {
       order(connection)
         .create({...data})
         .then(createdOrder => {
-          connection.close();
+          // connection.close();
           callback(null, prepareResponse(createdOrder));
         })
         .catch(err => {
@@ -40,7 +40,7 @@ module.exports = {
             console.log(err);
             callback(null, prepareResponse(err, 500));
           }
-          connection.close();
+          // connection.close();
           callback(null, prepareResponse(orderList));
           // prints "The author is Ian Fleming"
         });
@@ -59,7 +59,7 @@ module.exports = {
           {$set: {...data.uptade}},
         )
         .then(orderList => {
-          connection.close();
+          // connection.close();
           callback(null, prepareResponse(orderList));
         })
         .catch(err => {
@@ -82,7 +82,7 @@ module.exports = {
           {$set: {status: "attended"}},
         )
         .then(orderList => {
-          connection.close();
+          // connection.close();
           callback(null, prepareResponse(orderList));
         })
         .catch(err => {

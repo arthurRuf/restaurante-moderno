@@ -1,15 +1,18 @@
 import React from "react";
-import { ActivityIndicator, Alert, KeyboardAvoidingView, StyleSheet, Text } from "react-native";
+import { ActivityIndicator, Alert, KeyboardAvoidingView, Text } from "react-native";
 import { Block, Button } from "galio-framework";
-import Header from "../../components/Header";
+import { Header } from "../../components";
 
 
-const HomeRestaurant = (props) => {
-  const [orderList, setOrderList] = React.useState(undefined);
+const ListCategoryScreen = (props) => {
+  const [waiterList, setWaiterList] = React.useState(undefined);
 
-  const attendOrder = (id) => {
+  const deleteCategory = (id) => {
+
+    Alert.alert("Not implemented yet.");
+
     fetch(
-      "https://kcyst4l620.execute-api.us-east-1.amazonaws.com/dev/order/attend",
+      "https://kcyst4l620.execute-api.us-east-1.amazonaws.com/dev/category/delete",
       {
         method: "POST",
         headers: {
@@ -22,8 +25,9 @@ const HomeRestaurant = (props) => {
       })
       .then(res => res.json())
       .then(response => {
-        setOrderList(
-          (orderList || []).filter(item => {
+        Alert.alert("Ops, algo deu errado!");
+        setWaiterList(
+          (waiterList || []).filter(item => {
             if (item._id === id) {
               return false;
             } else {
@@ -38,24 +42,20 @@ const HomeRestaurant = (props) => {
   };
 
   React.useEffect(() => {
+    console.log("props", props);
     fetch(
-      "https://kcyst4l620.execute-api.us-east-1.amazonaws.com/dev/order/",
+      "https://kcyst4l620.execute-api.us-east-1.amazonaws.com/dev/category",
       {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-          filter: {
-            status: "waiting",
-          },
-        }),
+        body: JSON.stringify({}),
         credentials: "same-origin",
       })
       .then(res => res.json())
       .then(response => {
-        const orderListTemp = response.data;
-        setOrderList(orderListTemp);
+        setWaiterList(response.data);
       })
       .catch((err) => {
         console.log("err", JSON.stringify(err));
@@ -66,31 +66,20 @@ const HomeRestaurant = (props) => {
 
   return (
     <Block flex>
-      <Header title="Pedidos pendentes"/>
+      <Header title="Listar Categorias"/>
       <KeyboardAvoidingView behavior="height" enabled>
         {
-          orderList === undefined ?
+          waiterList === undefined ?
             <ActivityIndicator size={"large"}/> :
-            orderList.map(item => {
+            waiterList.map(item => {
               return (
                 <Block key={item._id}>
-
-                  <Block>
-                    <Text style={{fontSize: 18, fontWeight: "700"}}>Mesa: {item.table}</Text>
-                  </Block>
-                  <Block>
-                    {
-                      item.productList
-                        .map(product => <Text style={{fontSize: 18}} key={product._id}>• {product.name}</Text>)
-                    }
-                  </Block>
-
+                  <Text>{item.name}</Text>
                   <Button onPress={() => {
-                    attendOrder(item._id);
+                    deleteCategory(item._id);
                   }}>
-                    Concluir Pedido
+                    Excluir
                   </Button>
-
                 </Block>
               );
             })
@@ -100,8 +89,5 @@ const HomeRestaurant = (props) => {
   );
 };
 
-const styles = StyleSheet.create({});
 
-HomeRestaurant.propTypes = {};
-
-export default HomeRestaurant;
+export default ListCategoryScreen;

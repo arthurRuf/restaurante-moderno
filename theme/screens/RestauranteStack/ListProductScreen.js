@@ -12,10 +12,9 @@ const ListProductScreen = (props) => {
       {
         method: "POST",
         body: JSON.stringify({
-          test: 1,
         }),
       })
-      .then(response => JSON.parse(response))
+      .then(res => res.json())
       .then(response => {
         setProductList(response.data);
       })

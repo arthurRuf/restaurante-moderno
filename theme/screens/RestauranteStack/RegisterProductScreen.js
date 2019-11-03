@@ -1,6 +1,6 @@
 import React from "react";
 import { Alert, KeyboardAvoidingView, Text, TextInput } from "react-native";
-import { Block, Button, Input, } from "galio-framework";
+import { Block, Button, Input } from "galio-framework";
 import { Header } from "../../components";
 
 
@@ -27,10 +27,10 @@ const RegisterProductScreen = (props) => {
           img: img,
         }),
       }).then((res) => {
-      Alert.alert("Item cadastrado com sucesso!");
+      Alert.alert("Produto cadastrado com sucesso!");
       console.log(res);
     }).catch((err) => {
-      Alert.alert("Erro ao cadastrar o item");
+      Alert.alert("Erro ao cadastrar o Produto");
       console.log(err);
     });
   };
@@ -38,7 +38,7 @@ const RegisterProductScreen = (props) => {
 
   return (
     <Block flex>
-      <Header title="Cadastra Item Menu"/>
+      <Header title="Cadastro de Produto"/>
       <KeyboardAvoidingView behavior="height" enabled>
         <Text>Nome</Text>
         <Input
@@ -55,7 +55,7 @@ const RegisterProductScreen = (props) => {
           value={price}
           onChangeText={setPrice}
         />
- <Text>Img</Text>
+        <Text>Img</Text>
         <Input
           value={img}
           onChangeText={setImg}

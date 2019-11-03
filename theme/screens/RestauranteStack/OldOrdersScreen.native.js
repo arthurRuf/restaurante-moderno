@@ -4,7 +4,7 @@ import { Block, Button } from "galio-framework";
 import Header from "../../components/Header";
 
 
-const HomeRestaurant = (props) => {
+const OldOrdersScreen = (props) => {
   const [orderList, setOrderList] = React.useState(undefined);
 
   const attendOrder = (id) => {
@@ -47,7 +47,7 @@ const HomeRestaurant = (props) => {
         },
         body: JSON.stringify({
           filter: {
-            status: "waiting",
+            status: "attended",
           },
         }),
         credentials: "same-origin",
@@ -66,7 +66,7 @@ const HomeRestaurant = (props) => {
 
   return (
     <Block flex>
-      <Header title="Pedidos pendentes"/>
+      <Header title="Histórico de Pedidos"/>
       <KeyboardAvoidingView behavior="height" enabled>
         {
           orderList === undefined ?
@@ -85,12 +85,6 @@ const HomeRestaurant = (props) => {
                     }
                   </Block>
 
-                  <Button onPress={() => {
-                    attendOrder(item._id);
-                  }}>
-                    Concluir Pedido
-                  </Button>
-
                 </Block>
               );
             })
@@ -102,6 +96,6 @@ const HomeRestaurant = (props) => {
 
 const styles = StyleSheet.create({});
 
-HomeRestaurant.propTypes = {};
+OldOrdersScreen.propTypes = {};
 
-export default HomeRestaurant;
+export default OldOrdersScreen;

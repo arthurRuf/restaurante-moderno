@@ -23,6 +23,9 @@ import RegisterProductScreen from "../screens/RestauranteStack/RegisterProductSc
 import RegisterWaiterScreen from "../screens/RestauranteStack/RegisterWaiterScreen";
 import ListWaiterScreen from "../screens/RestauranteStack/ListWaiterScreen";
 import ListProductScreen from "../screens/RestauranteStack/ListProductScreen";
+import ListCategoryScreen from "../screens/RestauranteStack/ListCategoryScreen";
+import RegisterCategoryScreen from "../screens/RestauranteStack/RegisterCategoryScreen";
+import OldOrdersScreen from "../screens/RestauranteStack/OldOrdersScreen.native";
 
 const transitionConfig = (transitionProps, prevTransitionProps) => ({
   transitionSpec: {
@@ -93,7 +96,7 @@ const Login = createStackNavigator({
     }),
   },
 }, {
-  cardStyle: {backgroundColor: "#eeeeee"},
+  cardStyle: {backgroundColor: "#EEE"},
   transitionConfig,
 });
 
@@ -123,6 +126,22 @@ const RestaurantStack = createDrawerNavigator({
       ),
     }),
   },
+  RegisterCategoryScreen: {
+    screen: RegisterCategoryScreen,
+    navigationOptions: ({navigation}) => ({
+      DrawerLabel: ({focused}) => (
+        <Drawer focused={focused} screen="RegisterCategoryScreen" title="Cadastrar Categoria"/>
+      ),
+    }),
+  },
+  ListCategoryScreen: {
+    screen: ListCategoryScreen,
+    navigationOptions: ({navigation}) => ({
+      DrawerLabel: ({focused}) => (
+        <Drawer focused={focused} screen="ListCategoryScreen" title="Listar Categoria"/>
+      ),
+    }),
+  },
   RegisterProductScreen: {
     screen: RegisterProductScreen,
     navigationOptions: ({navigation}) => ({
@@ -136,6 +155,14 @@ const RestaurantStack = createDrawerNavigator({
     navigationOptions: ({navigation}) => ({
       DrawerLabel: ({focused}) => (
         <Drawer focused={focused} screen="ListProductScreen" title="Listar Produtos"/>
+      ),
+    }),
+  },
+  OldOrdersScreen: {
+    screen: OldOrdersScreen,
+    navigationOptions: ({navigation}) => ({
+      DrawerLabel: ({focused}) => (
+        <Drawer focused={focused} screen="OldOrdersScreen" title="Pedidos Antigos"/>
       ),
     }),
   },
@@ -154,6 +181,15 @@ const RestaurantStack = createDrawerNavigator({
       header: <Header back white transparent title=""/>,
       drawerLabel: ({focused}) => (
         <Drawer focused={focused} screen="Settings" title="Settings"/>
+      ),
+    }),
+  },
+  Logout: {
+    screen: OnboardingScreen,
+    navigationOptions: (navOpt) => ({
+      header: <Header back white transparent title=""/>,
+      drawerLabel: ({focused}) => (
+        <Drawer focused={focused} screen="AppStack" title="Logout"/>
       ),
     }),
   },
@@ -180,6 +216,15 @@ const ClientStack = createDrawerNavigator({
           <Drawer focused={focused} screen="Settings" title="Configurações"/>
         ),
         headerTransparent: true,
+      }),
+    },
+    Logout: {
+      screen: OnboardingScreen,
+      navigationOptions: (navOpt) => ({
+        header: <Header back white transparent title=""/>,
+        drawerLabel: ({focused}) => (
+          <Drawer focused={focused} screen="AppStack" title="Logout"/>
+        ),
       }),
     },
   },

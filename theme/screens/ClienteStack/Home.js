@@ -17,6 +17,8 @@ const Home = props => {
   });
 
   const registerOrder = () => {
+    console.log("props.navigation.getParam(tableNumber, 00)", props.navigation.getParam("tableNumber", "00"));
+    console.log("props.navigation", props.navigation);
     fetch(
       "https://kcyst4l620.execute-api.us-east-1.amazonaws.com/dev/order/create",
       {
@@ -26,13 +28,14 @@ const Home = props => {
         },
         body: JSON.stringify({
           ...order,
+          "table": props.navigation.getParam("tableNumber", "00"),
         }),
         credentials: "same-origin",
       })
       .then(response => {
         Alert.alert("Feito!");
         setOrder({
-          "table": "",
+          ...order,
           "productList": [],
           "status": "waiting",
         });
@@ -108,9 +111,14 @@ const Home = props => {
               color="warning"
               iconColor="#fff"
               onPress={()=> {
+                if (order.productList.length === 0) {
+                  Alert.alert("Por favor, adicione ao menou um produto ao podido");
+                  return;
+                }
                 registerOrder();
               }}
               style={{
+                borderRadius: 80,
                 width: 80,
                 height: 80,
                 position: "absolute",
