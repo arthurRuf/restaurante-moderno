@@ -1,5 +1,5 @@
 import React from "react";
-import { ActivityIndicator, Alert, KeyboardAvoidingView, Text } from "react-native";
+import { ActivityIndicator, Alert, KeyboardAvoidingView, Text  } from "react-native";
 import { Block, Button } from "galio-framework";
 import { Header } from "../../components";
 

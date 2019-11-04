@@ -1,8 +1,8 @@
 import React from "react";
-import { Alert, KeyboardAvoidingView, Text, TextInput } from "react-native";
+import { Alert, KeyboardAvoidingView, Text, TextInput , StyleSheet } from "react-native";
 import { Block, Button, Input, } from "galio-framework";
 import { Header } from "../../components";
-
+import { materialTheme } from '../../constants';
 
 const RegisterWaiterScreen = (props) => {
   const [name, setName] = React.useState("");
@@ -37,23 +37,23 @@ const RegisterWaiterScreen = (props) => {
     <Block flex>
       <Header title="Cadastra Garçom"/>
       <KeyboardAvoidingView behavior="height" enabled>
-        <Text>Nome</Text>
-        <Input
+        <Text style={styles.text} >Nome</Text>
+        <Input  style={styles.input}
           value={name}
           onChangeText={setName}
         />
-        <Text>Usuário</Text>
-        <Input
+        <Text style={styles.text}>Usuário</Text>
+        <Input style={styles.input}
           value={username}
           onChangeText={setUsername}
         />
-        <Text>Senha</Text>
-        <Input
+        <Text style={styles.text}>Senha</Text>
+        <Input style={styles.input}
           value={password}
           onChangeText={setPassword}
         />
 
-        <Button
+        <Button style={styles.button}
           center
           onPress={() => {
             save();
@@ -66,5 +66,29 @@ const RegisterWaiterScreen = (props) => {
   );
 };
 
-
+const styles = StyleSheet.create({
+  text: {
+   fontSize: 15,
+  //color:	materialTheme.COLORS.PRICE_COLOR,
+  paddingBottom: 5,
+  marginTop:20,
+  },
+  input: {
+   //color: materialTheme.COLORS.INPUT,
+   // borderEndColor:materialTheme.COLORS.DEFAULT,
+    borderEndWidth: 0 ,
+    borderStartWidth:0,
+    textDecorationColor: 0,
+   // borderWidth:2,
+  //border-width: 0 0 2px,
+ // border-color: materialTheme.COLORS.DEFAULT,
+  }, 
+  button: {
+   // paddingBottom:28
+   //alignContent:center,
+   marginTop:160,
+   marginVertical: 10,
+   marginHorizontal: 20,
+  },
+});
 export default RegisterWaiterScreen;

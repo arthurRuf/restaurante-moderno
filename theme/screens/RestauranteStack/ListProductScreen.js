@@ -33,6 +33,7 @@ const ListProductScreen = (props) => {
           productList.map(item => {
             return (
               <Text>{item.name}</Text>
+                      
             );
           })
         }
