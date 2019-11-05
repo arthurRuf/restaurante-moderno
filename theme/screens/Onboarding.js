@@ -51,7 +51,7 @@ const Onboarding = props => {
                     return;
                   }
 
-                  props.navigation.navigate('ClientStack', tableNumber);
+                  props.navigation.navigate('ClientStack', {tableNumber: tableNumber});
                 }}
               >
                 Entrar como Cliente
