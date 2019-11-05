@@ -1,7 +1,8 @@
 import React from "react";
-import { Alert, KeyboardAvoidingView, Text, TextInput , StyleSheet } from "react-native";
+import { Alert, ImageBackground, KeyboardAvoidingView, Text, TextInput , StyleSheet } from "react-native";
 import { Block, Button, Input, } from "galio-framework";
 import { Header } from "../../components";
+
 import { materialTheme } from '../../constants';
 
 const RegisterWaiterScreen = (props) => {
@@ -34,9 +35,13 @@ const RegisterWaiterScreen = (props) => {
 
 
   return (
-    <Block flex>
+    <Block   flex>
+         <ImageBackground
+            source={{ uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQmAPaZNZdvtX9gyUM3ebCmRdfN_FXyTOafSDcnBxnrrTrra2ME' }}
+            style={{ height: 1}}
+          ></ImageBackground>
       <Header title="Cadastra Garçom"/>
-      <KeyboardAvoidingView behavior="height" enabled>
+      <KeyboardAvoidingView behavior="height" enabled style={styles.campos}>
         <Text style={styles.text} >Nome</Text>
         <Input  style={styles.input}
           value={name}
@@ -66,7 +71,11 @@ const RegisterWaiterScreen = (props) => {
   );
 };
 
-const styles = StyleSheet.create({
+const styles = StyleSheet.create({ 
+  campos: {
+ marginTop:150,
+ 
+ },
   text: {
    fontSize: 15,
   //color:	materialTheme.COLORS.PRICE_COLOR,
@@ -86,7 +95,7 @@ const styles = StyleSheet.create({
   button: {
    // paddingBottom:28
    //alignContent:center,
-   marginTop:160,
+   marginTop:30,
    marginVertical: 10,
    marginHorizontal: 20,
   },

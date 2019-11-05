@@ -1,5 +1,5 @@
 import React from "react";
-import { ActivityIndicator, Alert, KeyboardAvoidingView, Text } from "react-native";
+import { ActivityIndicator, Alert,  StyleSheet ,KeyboardAvoidingView, Text } from "react-native";
 import { Block, Button } from "galio-framework";
 import { Header } from "../../components";
 
@@ -73,9 +73,9 @@ const ListCategoryScreen = (props) => {
             <ActivityIndicator size={"large"}/> :
             waiterList.map(item => {
               return (
-                <Block key={item._id}>
-                  <Text>{item.name}</Text>
-                  <Button onPress={() => {
+                <Block style={styles.blockquote} key={item._id}>
+                  <Text style={styles.mesa}>{item.name}</Text>
+                  <Button  style={styles.botao} onPress={() => {
                     deleteCategory(item._id);
                   }}>
                     Excluir
@@ -89,5 +89,29 @@ const ListCategoryScreen = (props) => {
   );
 };
 
+const styles = StyleSheet.create({
+  blockquote: {
+ 
+    marginBottom:15,
+    marginTop:30,
+    borderRadius: 6,
+    borderWidth: 1,
+    borderColor: '#d6d7da',
+  },
+  
+  botao:{
+    
+    marginLeft:15,
+ 
+  },
+  mesa:{
+   
+    marginBottom:5,
+    marginLeft:150,
+    fontSize: 19,
+    fontWeight: 'bold',
+    color:"#A901DB",
+  },
+});
 
 export default ListCategoryScreen;
