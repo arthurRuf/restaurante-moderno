@@ -74,12 +74,15 @@ const Home = props => {
         showsVerticalScrollIndicator={false}
         contentContainerStyle={styles.products}>
         <Block flex>
+            itemId: {JSON.stringify(navigation.getParam('itemId', 'tableNumber'))}
+            Alert.alert(itemId);
           {
             itemMenuList.map(item => (
               <Product
                 product={item}
                 key={item._id}
-                tableNumber={props.navigation.getParam("tableNumber", "11")}
+                tableNumber={props.navigation.getParam('tableNumber')}
+                
                 onOrder={(productId) => {
                   setOrder({
                     "table": props.navigation.getParam("tableNumber", "11"),

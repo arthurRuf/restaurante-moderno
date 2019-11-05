@@ -65,7 +65,7 @@ const HomeRestaurant = (props) => {
 
 
   return (
-    <Block flex>
+    <Block flex style={styles.pageContent}>
       <Header title="Pedidos pendentes"/>
       <KeyboardAvoidingView behavior="height" enabled>
         {
@@ -73,15 +73,15 @@ const HomeRestaurant = (props) => {
             <ActivityIndicator size={"large"}/> :
             orderList.map(item => {
               return (
-                <Block key={item._id}>
+                <Block style={styles.blockquote} key={item._id}>
 
-                  <Block>
-                    <Text style={{fontSize: 18, fontWeight: "700"}}>Mesa: {item.table}</Text>
+                  <Block style={styles.pedido}>
+                    <Text style={styles.mesa}>Mesa: {item.table}</Text>
                   </Block>
                   <Block>
-                    {
+                    {// style={{fontSize: 18, fontWeight: "700"}}
                       item.productList
-                        .map(product => <Text style={{fontSize: 18}} key={product._id}>• {product.name}</Text>)
+                        .map(product => <Text style={styles.pedido} key={product._id}>{product.name}</Text>)
                     }
                   </Block>
 
@@ -100,7 +100,36 @@ const HomeRestaurant = (props) => {
   );
 };
 
-const styles = StyleSheet.create({});
+
+const styles = StyleSheet.create({
+  blockquote: {
+ 
+    marginBottom:40,
+    marginTop:3,
+    borderRadius: 6,
+    borderWidth: 1,
+    borderColor: '#d6d7da',
+  },
+  pageContent: {
+    flex: 1,
+    paddingHorizontal: 20,
+
+  
+  },
+  pedido:{
+    
+    marginLeft:100,
+ 
+  },
+  mesa:{
+    fontSize: 366, fontWeight: "700",
+    marginBottom:5,
+    
+    fontSize: 19,
+    fontWeight: 'bold',
+    color:"#A901DB",
+  },
+});
 
 HomeRestaurant.propTypes = {};
 
