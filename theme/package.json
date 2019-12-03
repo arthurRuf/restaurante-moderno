@@ -10,11 +10,10 @@
     "android": "cross-env REACT_EDITOR=code expo start --android",
     "ios": "cross-env REACT_EDITOR=code expo start --ios",
     "eject": "expo eject",
-    "test2": "node ./node_modules/jest/bin/jest.js --watchAll",
-    "test": "node ./node_modules/.bin/jest test/**/*.spec.js"
+    "test": "node ./node_modules/jest/bin/jest.js --watchAll"
   },
   "jest": {
-    "preset": "jest-expo"
+    "preset": "@testing-library/react-native"
   },
   "dependencies": {
     "expo": "^35.0.1",
@@ -35,25 +34,11 @@
     "@testing-library/react-native": "^5.0.1",
     "babel-preset-expo": "^7.1.0",
     "cross-env": "^5.2.0",
-    "detox": "^14.8.5",
-    "detox-expo-helpers": "^0.6.0",
     "expo-cli": "^3.9.1",
-    "expo-detox-hook": "^1.0.10",
-    "jest-expo": "^35.0.0",
-    "react-native-testing-library": "^1.11.1"
+    "jest-expo": "^35.0.0"
   },
   "bugs": {
     "url": "https://github.com/creativetimofficial/material-kit-react-native/issues"
   },
-  "homepage": "https://demos.creative-tim.com/material-kit-react-native/",
-  "detox": {
-    "test-runner": "jest",
-    "configurations": {
-      "ios.sim": {
-        "binaryPath": "bin/Exponent.app",
-        "type": "ios.simulator",
-        "name": "iPhone 11"
-      }
-    }
-  }
+  "homepage": "https://demos.creative-tim.com/material-kit-react-native/"
 }
