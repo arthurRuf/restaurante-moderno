@@ -31,6 +31,8 @@ const assetImages = [
 // cache product images
 products.map(product => assetImages.push(product.image));
 
+console.disableYellowBox = true;
+
 function cacheImages(images) {
   return images.map(image => {
     if (typeof image === 'string') {
@@ -47,6 +49,7 @@ export default class App extends React.Component {
   };
 
   render() {
+    console.disableYellowBox = true;
     if (!this.state.isLoadingComplete && !this.props.skipLoadingScreen) {
       return (
         <AppLoading
