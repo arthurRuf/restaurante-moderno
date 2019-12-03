@@ -9,6 +9,7 @@ import Images from '../constants/Images';
 
 const Onboarding = props => {
     const [tableNumber, setTableNumber] = React.useState("");
+    const [error, setError] = React.useState(false);
 
     return (
       <Block flex style={styles.container}>
@@ -39,23 +40,30 @@ const Onboarding = props => {
                 placeholder={"Número da Mesa"}
                 vaule={tableNumber}
                 onChangeText={setTableNumber}
-                />
+                testID={"tableNumber"}
+              />
               <Button
                 shadowless
                 style={styles.button}
                 color={materialTheme.COLORS.BUTTON_COLOR}
                 onPress={() =>{
                   console.log("tableNumber", tableNumber);
-                  if (tableNumber === "") {
-                    Alert.alert("Por favor, informe o número da mesa.");
+                  if (tableNumber === "" || isNaN(tableNumber)) {
+                    setError(true)
+                    // Alert.alert("Por favor, informe o número da mesa.");
                     return;
                   }
 
                   props.navigation.navigate('ClientStack', {tableNumber: tableNumber});
                 }}
+                testID={"sendButton"}
               >
                 Entrar como Cliente
               </Button>
+              {
+                error &&
+                <Text testID={"messageText"}>Mesa invalida</Text>
+              }
               <Button
                 shadowless
                 style={[styles.button, { marginTop: 8}]}
