@@ -10,7 +10,6 @@
     "android": "cross-env REACT_EDITOR=code expo start --android",
     "ios": "cross-env REACT_EDITOR=code expo start --ios",
     "eject": "expo eject",
-    "test2": "node ./node_modules/jest/bin/jest.js --watchAll",
     "test": "node ./node_modules/.bin/jest test/**/*.spec.js"
   },
   "jest": {
