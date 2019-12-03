@@ -1,0 +1,63 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders Onboarding 1`] = `
+<View flex style={styles.container}>
+        <StatusBar barStyle="light-content" />
+        <View flex center>
+          <ImageBackground
+            source={{  uri: Images.Onboarding }}
+            style={{ height: height, width: width, zIndex: 1 }}
+          />
+        </View>
+        <View flex space="between" style={styles.padded}>
+          <View flex space="around" style={{ zIndex: 2 }}>
+            <View>
+              <View>
+                <Text color="white" size={60}>Cyber</Text>
+              </View>
+              <View row>
+                <Text color="white" size={60}>Food</Text>
+              </View>
+              <Text size={16} color='rgba(255,255,255,0.6)'>
+                Uma inovação no seu jeito de comer.
+              </Text>
+            </View>
+            <View center>
+              <InputText
+                autofocus={true}
+                style={{fontSize: 24, color: "#000"}}
+                placeholder={"Número da Mesa"}
+                vaule={tableNumber}
+                onChangeText={setTableNumber}
+                testID={"tableNumber"}
+                />
+              <Button
+                shadowless
+                style={styles.button}
+                color={materialTheme.COLORS.BUTTON_COLOR}
+                onPress={() =>{
+                  console.log("tableNumber", tableNumber);
+                  if (tableNumber === "") {
+                    Alert.alert("Por favor, informe o número da mesa.");
+                    return;
+                  }
+
+                  props.navigation.navigate('ClientStack', {tableNumber: tableNumber});
+                }}
+              >
+                Entrar como Cliente
+              </Button>
+              <Button
+                shadowless
+                style={[styles.button, { marginTop: 8}]}
+                color={"#333"}
+                onPress={() => {
+                  props.navigation.navigate("Login");
+                }}>
+                Acesso aos Garçons
+              </Button>
+            </View>
+          </View>
+        </View>
+      </View>
+`;
