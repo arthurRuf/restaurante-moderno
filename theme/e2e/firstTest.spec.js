@@ -7,7 +7,7 @@ describe('App login', () => {
 
   it('should open costumer page', async () => {
     await element(by.id('tableNumber')).tap();
-    await element(by.id('tableNumber')).typeText('123');
+    await element(by.id('tableNumber')).typeText('abc');
     await element(by.id('sendButton')).tap();
     await expect(element(by.id('messageText'))).toHaveText('Mesa invalida');
   });
