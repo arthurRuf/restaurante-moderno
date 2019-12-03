@@ -48,7 +48,7 @@ const Onboarding = props => {
               color={materialTheme.COLORS.BUTTON_COLOR}
               onPress={() =>{
                 console.log("tableNumber", tableNumber);
-                if (tableNumber === "") {
+                if (tableNumber === "" || isNaN(tableNumber)) {
                   // Alert.alert("Por favor, informe o número da mesa.");
                   setError(true)
                   return;
