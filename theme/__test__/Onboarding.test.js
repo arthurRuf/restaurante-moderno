@@ -5,11 +5,11 @@ import { render } from '@testing-library/react-native';
 import Onboarding from '../screens/Onboarding';
 import App from "../App";
 
-test('examples of some things', async () => {
+test('should return error message', async () => {
   const { getByTestId, getByText, queryByTestId, baseElement } = render(
       <App />
     );
-  const famousWomanInHistory = "123";
+  const famousWomanInHistory = "abc";
 
   const input = getByTestId('tableNumber');
   fireEvent.changeText(input, famousWomanInHistory);
@@ -17,5 +17,6 @@ test('examples of some things', async () => {
   const button = getByText('Entrar como Cliente');
   fireEvent.press(button);
 
-  await wait(() => expect(queryByTestId('printed-username')).toBeTruthy());
+  //REVER essa condição
+  await wait(() => expect(queryByTestId('messageText')).toBeTruthy());
 });
